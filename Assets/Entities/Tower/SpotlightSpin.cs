@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class SpotlightSpin : MonoBehaviour
 {
-    float speed = 10f;
+    [SerializeField]
+    public GameObject spotlightTarget;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,6 +13,7 @@ public class SpotlightSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * speed * Time.deltaTime);
+        //transform.Rotate(Vector3.up * speed * Time.deltaTime);
+        transform.LookAt(spotlightTarget.transform);
     }
 }
