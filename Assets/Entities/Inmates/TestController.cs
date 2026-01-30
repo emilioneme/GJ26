@@ -15,6 +15,6 @@ public class TestController : MonoBehaviour
     void Update()
     {
         cc.Move(input.forwardDirection * Time.deltaTime);
-        // cc.transform.rotation = Quaternion.LookRotation(input.forwardDirection);
+        cc.transform.rotation = Quaternion.LookRotation(input.forwardDirection);
     }
 }
