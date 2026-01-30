@@ -14,6 +14,8 @@ public class SpotlightSpin : MonoBehaviour
     void Update()
     {
         //transform.Rotate(Vector3.up * speed * Time.deltaTime);
-        transform.LookAt(spotlightTarget.transform);
+        Vector3 direction = (transform.position - spotlightTarget.transform.position).normalized;
+        Vector3 zeroedDir = new Vector3(direction.x, 0, direction.z);
+        transform.rotation = Quaternion.LookRotation(zeroedDir);
     }
 }
