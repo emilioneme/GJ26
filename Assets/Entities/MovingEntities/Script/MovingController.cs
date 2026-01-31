@@ -11,7 +11,9 @@ public class MovingController : MonoBehaviour
     [SerializeField] float sprintIncreaseSpeed = 1;
     [SerializeField] float gravity = -9.81f;
 
-    Vector3 moveInput;
+    public Vector3 moveInput;
+
+    [SerializeField] bool canMove = true;
 
     CharacterController cc;
     private void Awake()
@@ -26,7 +28,8 @@ public class MovingController : MonoBehaviour
         else
             moveInput.y = 0f;
 
-        cc.Move(transform.rotation * moveInput * Time.deltaTime);
+        if(canMove)
+            cc.Move(transform.rotation * moveInput * Time.deltaTime);
     }
 
     public void UpdateMoveEntity(Vector2 direction)

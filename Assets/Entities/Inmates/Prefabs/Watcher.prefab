@@ -134,11 +134,9 @@ GameObject:
   - component: {fileID: 1632362302737149079}
   - component: {fileID: 1471455105796720790}
   - component: {fileID: 5764428911575369393}
-  - component: {fileID: 8772552551670494131}
   - component: {fileID: 5084484402078306335}
-  - component: {fileID: 850273965548388046}
   m_Layer: 10
-  m_Name: Inmate
+  m_Name: Watcher
   m_TagString: Inmate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,38 +219,7 @@ MonoBehaviour:
   sprintIncreaseSpeed: 100
   gravity: -9.81
   moveInput: {x: 0, y: 0, z: 0}
-  canMove: 1
---- !u!114 &8772552551670494131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8335197841678897772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c956a0d834873943a48000d4a64f3a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveForward
-  onMove:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5764428911575369393}
-        m_TargetAssemblyTypeName: MovingController, Assembly-CSharp
-        m_MethodName: UpdateMoveEntity
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  changedSpeed:
-    m_PersistentCalls:
-      m_Calls: []
-  idlePropability: 0.3
+  canMove: 0
 --- !u!114 &5084484402078306335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,52 +247,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  deadZoneDegrees: 2
+  deadZoneDegrees: 0
   fullSteerDegrees: 45
   alignentMag: 1
   steerSmoothTime: 0.25
   maxSteerSpeed: 10
---- !u!114 &850273965548388046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8335197841678897772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5b9e2bfee658d40a49495ae84e6a9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeBehavour
-  changeInterval: 15
-  randomIntervalRange: 5
-  ChangeBehavuour:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8772552551670494131}
-        m_TargetAssemblyTypeName: MoveForward, Assembly-CSharp
-        m_MethodName: ChangeBehaviour
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5084484402078306335}
-        m_TargetAssemblyTypeName: InmateRotationInput, Assembly-CSharp
-        m_MethodName: ChangeBehaviour
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &8436229906902215984
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,8 +281,8 @@ Transform:
   m_GameObject: {fileID: 8436229906902215984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.000000059604, z: 8.4}
-  m_LocalScale: {x: 16.427986, y: 16.427986, z: 16.427986}
+  m_LocalPosition: {x: 0, y: 6.43e-13, z: 12.18}
+  m_LocalScale: {x: 24.858656, y: 24.858656, z: 24.858656}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5866885404641119240}
@@ -467,10 +393,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxInmateDistance: 10
+  maxInmateDistance: 50
   distanceMultiplier: 1
   Inmates: []
-  idleInfluence: 0
+  idleInfluence: 1
 --- !u!1 &9002328647586111290
 GameObject:
   m_ObjectHideFlags: 0

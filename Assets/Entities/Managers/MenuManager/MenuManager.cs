@@ -10,6 +10,9 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         volumeSlider.value = UserData.Instance.volume;
         sensitivitySlider.value = UserData.Instance.sensitiviy;
     }

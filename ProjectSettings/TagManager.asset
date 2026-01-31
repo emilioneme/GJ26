@@ -8,6 +8,7 @@ TagManager:
   - private
   - Inmate
   - Floor
+  - Watcher
   layers:
   - Default
   - TransparentFX
