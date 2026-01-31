@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestController
   cc: {fileID: 4254368227508052361}
   input: {fileID: 8784431017187429758}
+  inmateModel: {fileID: 1506320632056211530}
 --- !u!1001 &1740341586102867227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,6 +160,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ae81d0b29fcb0a4aa62b3472c2b6a61, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2896841570950981984}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ae81d0b29fcb0a4aa62b3472c2b6a61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8838465889396174682}
   m_SourcePrefab: {fileID: 100100000, guid: 0ae81d0b29fcb0a4aa62b3472c2b6a61, type: 3}
 --- !u!1 &1506320632056211530 stripped
 GameObject:
@@ -178,7 +182,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: bada0b9a203ec3a4986c54172c4d58d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -187,6 +191,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8838465889396174682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506320632056211530}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed6e71a4b5c30541ab2802b078d8852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  cc: {fileID: 4254368227508052361}
 --- !u!4 &2282293732877087472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0ae81d0b29fcb0a4aa62b3472c2b6a61, type: 3}
