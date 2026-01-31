@@ -4,7 +4,7 @@ using UnityEngine;
 public class SpotlightTarget : MonoBehaviour
 {
     [SerializeField]
-    public GameObject towerBase;
+    public GameObject center;
 
     [SerializeField]
     public float speed = 10f;
@@ -17,6 +17,6 @@ public class SpotlightTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(towerBase.transform.position, Vector3.up, speed * Time.deltaTime);
+        transform.RotateAround(center.transform.position, Vector3.up, speed * Time.deltaTime);
     }
 }
