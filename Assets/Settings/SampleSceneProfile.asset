@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ChannelMixer
   active: 1
   redOutRedIn:
-    m_OverrideState: 1
-    m_Value: 154
+    m_OverrideState: 0
+    m_Value: 200
   redOutGreenIn:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 122
   redOutBlueIn:
     m_OverrideState: 1
-    m_Value: -84
+    m_Value: 73
   greenOutRedIn:
     m_OverrideState: 0
     m_Value: 0
