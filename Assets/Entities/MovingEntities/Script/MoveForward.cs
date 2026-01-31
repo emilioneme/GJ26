@@ -10,7 +10,6 @@ public class MoveForward : MonoBehaviour
 
     bool isMoving = true;
 
-
     private void Update()
     {
         onMove.Invoke(isMoving ? new Vector2(0, 1) : Vector2.zero);

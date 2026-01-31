@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
+
+    public int numberOfBacthes = 20;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
