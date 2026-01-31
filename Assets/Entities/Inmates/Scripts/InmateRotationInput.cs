@@ -27,21 +27,6 @@ public class InmateRotationInput : MonoBehaviour
 
     public void UpdateDesiredRotation(Vector2 direction) // avg direction
     {
-        if (direction.sqrMagnitude < 0.0001f)
-        {
-            currentSteer = Mathf.SmoothDamp(
-                currentSteer,
-                0f,
-                ref steerVelocity,
-                steerSmoothTime,
-                maxSteerSpeed,
-                Time.deltaTime
-            );
-
-            onSteer.Invoke(currentSteer);
-            return;
-        }
-
         Vector2 currentForward = new Vector2(transform.forward.x, transform.forward.z).normalized;
         Vector2 desired = direction.normalized;
 
@@ -53,28 +38,31 @@ public class InmateRotationInput : MonoBehaviour
             
 
         float signedAngle = Vector2.SignedAngle(currentForward, desired);
+        Debug.Log("signed angle: " + signedAngle);
         signedAngle = Mathf.Clamp(signedAngle, -fullSteerDegrees, fullSteerDegrees);
-
+        Debug.Log("clamped angle: " + signedAngle);
         float desiredSteer;
 
-        if (Mathf.Abs(signedAngle) < deadZoneDegrees)
-        {
-            desiredSteer = randomSteer;
-        }
-        else
-        {
-            desiredSteer = Mathf.Clamp(-signedAngle / fullSteerDegrees, -1f, 1f);
-        }
+        // if (Mathf.Abs(signedAngle) < deadZoneDegrees)
+        // {
+        //     desiredSteer = randomSteer;
+        // }
+        // else
+        // {
+        //     desiredSteer = Mathf.Clamp(-signedAngle / fullSteerDegrees, -1f, 1f);
+        // }
+        desiredSteer = Mathf.Clamp(signedAngle / fullSteerDegrees, -45f, 45f);
+        Debug.Log("desired steer: " + desiredSteer);
 
 
-        currentSteer = Mathf.SmoothDamp(
-            currentSteer,
-            desiredSteer,
-            ref steerVelocity,
-            steerSmoothTime,
-            maxSteerSpeed,
-            Time.deltaTime
-        );
+        // currentSteer = Mathf.SmoothDamp(
+        //     currentSteer,
+        //     desiredSteer,
+        //     ref steerVelocity,
+        //     steerSmoothTime,
+        //     maxSteerSpeed,
+        //     Time.deltaTime
+        // );
 
         onSteer.Invoke(desiredSteer);
         //onSteer.Invoke(currentSteer);

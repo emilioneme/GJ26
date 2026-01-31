@@ -50,8 +50,6 @@ public class DirectionCollider : MonoBehaviour
         if (Inmates.Count == 0)
         {
             averageDirection.Invoke(Vector2.zero);
-            desiredDirection.Invoke(Vector2.zero);
-            return;
         }
 
         Vector2 cumulativeDirection = Vector2.zero;
@@ -79,36 +77,11 @@ public class DirectionCollider : MonoBehaviour
             comulativePositon += position * distanceFactor;
         }
 
-        // IMPORTANT: re-check after removals
-        if (Inmates.Count == 0)
-        {
-            averageDirection.Invoke(Vector2.zero);
-            desiredDirection.Invoke(Vector2.zero);
-            return;
-        }
-
-        // alignment
-        Vector2 avgDirection = cumulativeDirection / Inmates.Count;
-        averageDirection.Invoke(avgDirection.normalized);
-
-        Vector2 alignentDirection = avgDirection.normalized * alignentWeight;
-        if (debugAlignent)
-            Debug.DrawRay(currentPositon3, new Vector3(alignentDirection.x, 0f, alignentDirection.y), Color.yellow);
-
-        // cohesion
-        Vector2 avgPosition = comulativePositon / Inmates.Count;
-        Vector2 posDirection = (avgPosition - currentPositon).normalized;
-
-        // If you *do* have a cohesionWeight, use it here; otherwise keep alignentWeight
-        Vector2 cohetionDirection = posDirection * alignentWeight;
-
-        if (debugCohesiveness)
-            Debug.DrawRay(currentPositon3, new Vector3(cohetionDirection.x, 0f, cohetionDirection.y), Color.green);
-
         // avoidance
         RaycastHit raycastHit;
         Vector2 avoidanceDirection = Vector2.zero;
 
+        //Debug.DrawRay(currentPositon3, self.transform.forward * avoidanceDistance, Color.red);
         if (Physics.Raycast(currentPositon3, self.transform.forward, out raycastHit, avoidanceDistance, avoidanceLayerMask))
         {
             Vector2 hitPos = new Vector2(raycastHit.point.x, raycastHit.point.z);
@@ -120,8 +93,38 @@ public class DirectionCollider : MonoBehaviour
         Vector2 avoidanceDir = avoidanceDirection * avoidanceWeight;
 
         if (debugAvoidance)
-            Debug.DrawRay(currentPositon3, new Vector3(avoidanceDir.x, 0f, avoidanceDir.y), Color.red);
+            Debug.DrawRay(currentPositon3, new Vector3(avoidanceDir.x, 0f, avoidanceDir.y), Color.yellow);
 
+        Vector2 alignentDirection = Vector2.zero;
+        Vector2 cohetionDirection = Vector2.zero;
+
+        // IMPORTANT: re-check after removals
+        if (Inmates.Count == 0)
+        {
+            averageDirection.Invoke(Vector2.zero);
+        } 
+        else
+        {
+           // alignment
+            Vector2 avgDirection = cumulativeDirection / Inmates.Count;
+            averageDirection.Invoke(avgDirection.normalized);
+
+            alignentDirection = avgDirection.normalized * alignentWeight;
+            if (debugAlignent)
+                Debug.DrawRay(currentPositon3, new Vector3(alignentDirection.x, 0f, alignentDirection.y), Color.yellow);
+
+            // cohesion
+            Vector2 avgPosition = comulativePositon / Inmates.Count;
+            Vector2 posDirection = (avgPosition - currentPositon).normalized;
+
+            // If you *do* have a cohesionWeight, use it here; otherwise keep alignentWeight
+            cohetionDirection = posDirection * alignentWeight;
+
+            if (debugCohesiveness)
+                Debug.DrawRay(currentPositon3, new Vector3(cohetionDirection.x, 0f, cohetionDirection.y), Color.green);
+        }
+
+        
         // final
         Vector2 finalDirection = (alignentDirection + cohetionDirection + avoidanceDir).normalized;
         Debug.DrawRay(currentPositon3, new Vector3(finalDirection.x, 0f, finalDirection.y), Color.blue);

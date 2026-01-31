@@ -163,7 +163,7 @@ MonoBehaviour:
   changedSpeed:
     m_PersistentCalls:
       m_Calls: []
-  idlePropability: 0.3
+  idlePropability: 0.5
 --- !u!114 &5084484402078306335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ MonoBehaviour:
   batchID: 0
   avoidanceLayerMask:
     serializedVersion: 2
-    m_Bits: 5120
+    m_Bits: 5121
   inmateManager: {fileID: 0}
   alignentWeight: 0
   cohesionWeight: 0
