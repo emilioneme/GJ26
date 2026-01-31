@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 413f4508762bb41309baef1d3f801b9a
+guid: e9fa7b8fe6b354eedadef07abc39b76d
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: TowerBase
-    second: {fileID: 2100000, guid: 4f3d398d1b00a4313a8e633cca7a1694, type: 2}
+      name: Concrete1
+    second: {fileID: 2100000, guid: 7354d8ff105584db5a3b558a3cf52235, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete2
+    second: {fileID: 2100000, guid: d66682078c7854c9a92169f5aef9c54f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConcreteFloor
+    second: {fileID: 2100000, guid: 09d4f94160e664f3a9c96cf95876c403, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
