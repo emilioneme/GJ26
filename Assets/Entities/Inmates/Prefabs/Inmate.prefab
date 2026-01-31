@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8772552551670494131}
   - component: {fileID: 5084484402078306335}
   - component: {fileID: 850273965548388046}
+  - component: {fileID: 6307314004078529899}
   m_Layer: 10
   m_Name: Inmate
   m_TagString: Inmate
@@ -126,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a517ab2df639142aa2036437be160c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingController
-  moveSpeed: 5
-  maxSprintSpeed: 3
+  moveSpeed: 2
+  maxSprintSpeed: 0
   sprintIncreaseSpeed: 100
   gravity: -9.81
   moveInput: {x: 0, y: 0, z: 0}
@@ -190,8 +191,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  deadZoneDegrees: 2
+  deadZoneDegrees: 0
   fullSteerDegrees: 45
+  alignentRandomness: 0.325
   alignentMag: 1
   steerSmoothTime: 0.25
   maxSteerSpeed: 10
@@ -212,18 +214,6 @@ MonoBehaviour:
   ChangeBehavuour:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8772552551670494131}
-        m_TargetAssemblyTypeName: MoveForward, Assembly-CSharp
-        m_MethodName: ChangeBehaviour
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 5084484402078306335}
         m_TargetAssemblyTypeName: InmateRotationInput, Assembly-CSharp
         m_MethodName: ChangeBehaviour
@@ -236,6 +226,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6307314004078529899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335197841678897772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d6bfa040f163d478052616d6b3bed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InmateManager
+  movingController: {fileID: 0}
+  inmateBatchID: 0
 --- !u!1 &8436229906902215984
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +384,9 @@ MonoBehaviour:
   maxInmateDistance: 10
   distanceMultiplier: 1
   Inmates: []
-  idleInfluence: 0
+  isPlayer: 0
+  batchID: 0
+  inmateManager: {fileID: 0}
 --- !u!1 &9002328647586111290
 GameObject:
   m_ObjectHideFlags: 0
