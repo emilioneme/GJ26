@@ -7,20 +7,30 @@ public class InmateRotationInput : MonoBehaviour
 
 
     [SerializeField] float deadZoneDegrees = 2f;
-    [SerializeField] float fullSteerDegrees = 45f;
 
+
+    [SerializeField][Range(-.4f, 1)] float alignentRandomness = 1;
     [SerializeField][Range(-1, 1)] float alignentMag = 1;
+
+    [SerializeField] float fullSteerDegrees = 45f;
     [SerializeField] float steerSmoothTime = 0.25f;  // bigger = slower, smoother
     [SerializeField] float maxSteerSpeed = 10f;      // limits how fast it can change
 
+    [SerializeField] bool randomAtStart = false;
+
+    float randomSteer => Random.Range(-1f, 1f);
     float currentSteer = 0f;
     float steerVelocity = 0f;
+
+    void Start()
+    {
+        if(randomAtStart)
+            ChangeBehaviour();
+    }
 
     public void UpdateDesiredRotation(Vector2 direction) //avrg direction
     {
         Vector2 dir = direction;
-
-        float alignent = alignentMag;
 
         Vector2 currentForward = new Vector2(transform.forward.x, transform.forward.z).normalized;
         Vector2 desired = dir.normalized;
@@ -29,13 +39,14 @@ public class InmateRotationInput : MonoBehaviour
         Debug.DrawRay(transform.position, new Vector3(desired.x, 0f, desired.y), Color.green);
 
         float signedAngle = Vector2.SignedAngle(currentForward, desired);
-        //float steer = Mathf.Clamp(-signedAngle * alignent / fullSteerDegrees, -1f, 1f);
+        signedAngle = Mathf.Clamp(signedAngle, -fullSteerDegrees, fullSteerDegrees);
         float desiredSteer;
 
         if (Mathf.Abs(signedAngle) < deadZoneDegrees)
-            desiredSteer = Random.Range(-1, 1); 
+            desiredSteer = randomSteer; 
         else
-            desiredSteer = Mathf.Clamp(-signedAngle * alignent / fullSteerDegrees, -1f, 1f);
+        desiredSteer = Mathf.Clamp(-signedAngle / fullSteerDegrees, -1, 1);
+            desiredSteer *= alignentMag;
 
         currentSteer = Mathf.SmoothDamp(
             currentSteer,
@@ -51,6 +62,7 @@ public class InmateRotationInput : MonoBehaviour
 
     public void ChangeBehaviour() 
     {
-        alignentMag = Mathf.Sign(Random.Range(-1, 1f));
+        alignentMag = Random.Range(alignentRandomness, 1);
+        //randomSteer = Random.Range(-1f, 1f);
     }
 }
