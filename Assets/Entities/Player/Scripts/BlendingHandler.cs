@@ -8,7 +8,7 @@ public class BlendingHandler : MonoBehaviour
     {
         if(avgDirection.sqrMagnitude < 0.0001f)
         {
-            currentBlendingEfficacy = 1;
+            currentBlendingEfficacy = -1;
             return;
         }
 
