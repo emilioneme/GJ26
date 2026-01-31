@@ -197,6 +197,7 @@ MonoBehaviour:
   maxSteerSpeed: 100
   randomAtStart: 1
   steerVelocity: 100
+  debug: 0
 --- !u!114 &850273965548388046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,9 +395,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 5120
   inmateManager: {fileID: 0}
-  alignentWeight: 1
-  cohesionWeight: 1
-  avoidanceWeight: 10000
+  alignentWeight: 0
+  cohesionWeight: 0
+  avoidanceWeight: 1
+  debugAlignent: 1
+  debugCohesiveness: 1
+  debugAvoidance: 1
 --- !u!1 &9002328647586111290
 GameObject:
   m_ObjectHideFlags: 0

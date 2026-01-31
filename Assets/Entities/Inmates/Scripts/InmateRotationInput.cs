@@ -15,6 +15,8 @@ public class InmateRotationInput : MonoBehaviour
 
     [SerializeField] float steerVelocity = 10f;
 
+    [SerializeField] bool debug = false;
+
     float randomSteer = 0f;
     float currentSteer = 0f;
 
@@ -43,8 +45,12 @@ public class InmateRotationInput : MonoBehaviour
         Vector2 currentForward = new Vector2(transform.forward.x, transform.forward.z).normalized;
         Vector2 desired = direction.normalized;
 
-        Debug.DrawRay(transform.position, new Vector3(currentForward.x, 0f, currentForward.y), Color.red);
-        Debug.DrawRay(transform.position, new Vector3(desired.x, 0f, desired.y), Color.green);
+        if (debug) 
+        {
+            Debug.DrawRay(transform.position, new Vector3(currentForward.x, 0f, currentForward.y), Color.red);
+            Debug.DrawRay(transform.position, new Vector3(desired.x, 0f, desired.y), Color.green);
+        }
+            
 
         float signedAngle = Vector2.SignedAngle(currentForward, desired);
         signedAngle = Mathf.Clamp(signedAngle, -fullSteerDegrees, fullSteerDegrees);
