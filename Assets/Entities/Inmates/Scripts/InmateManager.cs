@@ -3,7 +3,8 @@ using UnityEngine;
 public class InmateManager : MonoBehaviour
 {
     public MovingController movingController;
-    public int inmateBatchID;
+    public int inmateBatchID = 0;
+
     enum InmateState
     {
         Idle,
@@ -13,8 +14,12 @@ public class InmateManager : MonoBehaviour
 
     private void Awake()
     {
-        inmateBatchID = Random.Range(0, 5);
         movingController = GetComponent<MovingController>();
+    }
+
+    private void Start()
+    {
+        inmateBatchID = Random.Range(0, GameManager.Instance.numberOfBacthes);
     }
 
 }
