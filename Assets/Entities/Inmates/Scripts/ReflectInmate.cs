@@ -17,12 +17,12 @@ public class ReflectInmate : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log("HIT: " + hit.collider.name); // put this FIRST for debugging
+        //Debug.Log("HIT: " + hit.collider.name); // put this FIRST for debugging
 
         if (hit.collider.CompareTag("Floor"))
             return;
 
-        Debug.Log($"{name} bounced off {hit.collider.name}");
+        //Debug.Log($"{name} bounced off {hit.collider.name}");
         onBounce.Invoke();
     }
 }

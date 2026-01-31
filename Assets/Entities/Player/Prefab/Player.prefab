@@ -78,7 +78,19 @@ MonoBehaviour:
   self: {fileID: 6403309118223377689}
   averageDirection:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 259060450353339824}
+        m_TargetAssemblyTypeName: BlendingHandler, Assembly-CSharp
+        m_MethodName: UpdateBlendEfficacy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Inmates: []
 --- !u!1 &1218679596912812513
 GameObject:
@@ -465,6 +477,7 @@ GameObject:
   - component: {fileID: 5094880396112763352}
   - component: {fileID: 8448024773773889667}
   - component: {fileID: 5556573993898251065}
+  - component: {fileID: 259060450353339824}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -562,6 +575,7 @@ MonoBehaviour:
   xRotationSpeed: 100
   yRotationSpeed: 100
   pitchTransform: {fileID: 6705350200125114034}
+  bounceCooldown: 3
 --- !u!114 &8448024773773889667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +666,19 @@ MonoBehaviour:
         m_CallState: 2
   lookDeadzone: 0.001
   moveDeadzone: 0.001
+--- !u!114 &259060450353339824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403309118223377689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a044115a1076b42800efab63f97087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlendingHandler
+  currentBlendingEfficacy: 0
 --- !u!1 &6789573465357602942
 GameObject:
   m_ObjectHideFlags: 0
