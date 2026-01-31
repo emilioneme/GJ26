@@ -16,11 +16,12 @@ public class SpotlightCollider : MonoBehaviour
 
         if (Time.time - lastTimeDamaged > damageCooldown)
         {
+            Debug.Log("BlendingEfficacy: " + blendingHandler.currentBlendingEfficacy);
             if(blendingHandler.currentBlendingEfficacy < minBlendingEfficacy)
             {
                 float damage = Mathf.InverseLerp(1 - minBlendingEfficacy, -1, blendingHandler.currentBlendingEfficacy);
                 GameManager.Instance.TakeDamage(damage);
-                Debug.Log(damage);
+                //Debug.Log(damage);
                 lastTimeDamaged = Time.time;
             }
         }

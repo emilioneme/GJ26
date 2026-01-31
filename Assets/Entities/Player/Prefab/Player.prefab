@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 259060450353339824}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -766,4 +766,5 @@ MonoBehaviour:
   distanceMultiplier: 1
   Inmates: []
   isPlayer: 1
+  batchID: 0
   inmateManager: {fileID: 0}
