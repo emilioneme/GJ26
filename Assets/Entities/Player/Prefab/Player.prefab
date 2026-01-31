@@ -765,4 +765,5 @@ MonoBehaviour:
   maxInmateDistance: 10
   distanceMultiplier: 1
   Inmates: []
-  idleInfluence: 0
+  isPlayer: 1
+  inmateManager: {fileID: 0}
