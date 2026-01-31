@@ -22,10 +22,10 @@ TagManager:
   - 
   - Inmate
   - 
+  - Obstacle
   - 
   - 
-  - 
-  - 
+  - DirectionCollider
   - 
   - 
   - 

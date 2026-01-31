@@ -191,12 +191,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  deadZoneDegrees: 0
-  fullSteerDegrees: 45
-  alignentRandomness: 0.325
-  alignentMag: 1
+  deadZoneDegrees: 1
+  fullSteerDegrees: 90
   steerSmoothTime: 0.25
-  maxSteerSpeed: 10
+  maxSteerSpeed: 100
+  randomAtStart: 1
+  steerVelocity: 100
 --- !u!114 &850273965548388046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 590324179313990015}
   - component: {fileID: 3226514430194237832}
   - component: {fileID: 635170833630784134}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: DirectionColliderr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,6 +368,9 @@ MonoBehaviour:
   self: {fileID: 8335197841678897772}
   averageDirection:
     m_PersistentCalls:
+      m_Calls: []
+  desiredDirection:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5084484402078306335}
         m_TargetAssemblyTypeName: InmateRotationInput, Assembly-CSharp
@@ -384,9 +387,16 @@ MonoBehaviour:
   maxInmateDistance: 10
   distanceMultiplier: 1
   Inmates: []
+  avoidanceDistance: 10
   isPlayer: 0
   batchID: 0
+  avoidanceLayerMask:
+    serializedVersion: 2
+    m_Bits: 5120
   inmateManager: {fileID: 0}
+  alignentWeight: 1
+  cohesionWeight: 1
+  avoidanceWeight: 10000
 --- !u!1 &9002328647586111290
 GameObject:
   m_ObjectHideFlags: 0
