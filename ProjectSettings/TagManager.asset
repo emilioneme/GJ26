@@ -9,6 +9,7 @@ TagManager:
   - Inmate
   - Floor
   - Watcher
+  - StandingTarget
   layers:
   - Default
   - TransparentFX
@@ -22,10 +23,10 @@ TagManager:
   - 
   - Inmate
   - 
+  - Obstacle
   - 
   - 
-  - 
-  - 
+  - DirectionCollider
   - 
   - 
   - 
