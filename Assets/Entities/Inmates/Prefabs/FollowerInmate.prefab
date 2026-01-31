@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 7319175579224683032}
   - component: {fileID: 939684614000850329}
   m_Layer: 10
-  m_Name: Inmate
+  m_Name: FollowerInmate
   m_TagString: Inmate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
         m_CallState: 2
   deadZoneDegrees: 1
   fullSteerDegrees: 90
+  alignentMag: 1
   steerSmoothTime: 0.25
   maxSteerSpeed: 100
 --- !u!114 &850273965548388046
@@ -378,7 +379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2245932963189022425
 Transform:
   m_ObjectHideFlags: 0
@@ -514,8 +515,8 @@ MonoBehaviour:
     m_Bits: 5121
   inmateManager: {fileID: 0}
   alignentWeight: 1
-  cohesionWeight: 1
-  avoidanceWeight: 1
+  cohesionWeight: 0
+  avoidanceWeight: 0
   debugAlignent: 1
   debugCohesiveness: 1
   debugAvoidance: 1

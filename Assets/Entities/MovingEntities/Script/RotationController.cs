@@ -22,7 +22,6 @@ public class RotationController : MonoBehaviour
 
     private void Update()
     {
-
         transform.Rotate(Vector3.up, rotationY * yRotationSpeed * Time.deltaTime, Space.Self);
 
         currentPitch -= rotationX * xRotationSpeed * Time.deltaTime;
