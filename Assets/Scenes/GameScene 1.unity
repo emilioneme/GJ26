@@ -4526,6 +4526,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 939684614000850329, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
+      propertyPath: pitchRandomizerOffset
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5866885404641119240, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.16779
@@ -4565,6 +4569,30 @@ PrefabInstance:
     - target: {fileID: 5866885404641119240, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319175579224683032, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
+      propertyPath: m_Pitch
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319175579224683032, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
+      propertyPath: Priority
+      value: 78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319175579224683032, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
+      propertyPath: MaxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319175579224683032, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
+      propertyPath: DopplerLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319175579224683032, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.2638889
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319175579224683032, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8335197841678897772, guid: b6f48b6dcfe7dd24f9b3936f0a1cdff6, type: 3}
       propertyPath: m_Name
