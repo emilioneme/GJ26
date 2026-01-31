@@ -392,7 +392,7 @@ Transform:
   m_GameObject: {fileID: 8436229906902215984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.000000059604, z: 8.4}
+  m_LocalPosition: {x: -0, y: -0.000000059604, z: 5.29}
   m_LocalScale: {x: 16.427986, y: 16.427986, z: 16.427986}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -517,9 +517,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 5121
   inmateManager: {fileID: 0}
-  alignentWeight: 0
+  alignentWeight: 1
   cohesionWeight: 0
-  avoidanceWeight: 1
+  avoidanceWeight: 0
   debugAlignent: 1
   debugCohesiveness: 1
   debugAvoidance: 1

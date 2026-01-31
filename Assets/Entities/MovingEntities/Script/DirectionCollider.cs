@@ -93,7 +93,10 @@ public class DirectionCollider : MonoBehaviour
         Vector2 avoidanceDir = avoidanceDirection * avoidanceWeight;
 
         if (debugAvoidance)
-            Debug.DrawRay(currentPositon3, new Vector3(avoidanceDir.x, 0f, avoidanceDir.y), Color.yellow);
+        {
+            //Debug.DrawRay(currentPositon3, new Vector3(avoidanceDir.x, 0f, avoidanceDir.y), Color.yellow);
+        }
+            
 
         Vector2 alignentDirection = Vector2.zero;
         Vector2 cohetionDirection = Vector2.zero;
@@ -114,20 +117,20 @@ public class DirectionCollider : MonoBehaviour
                 Debug.DrawRay(currentPositon3, new Vector3(alignentDirection.x, 0f, alignentDirection.y), Color.yellow);
 
             // cohesion
-            Vector2 avgPosition = comulativePositon / Inmates.Count;
-            Vector2 posDirection = (avgPosition - currentPositon).normalized;
+            // Vector2 avgPosition = comulativePositon / Inmates.Count;
+            // Vector2 posDirection = (avgPosition - currentPositon).normalized;
 
-            // If you *do* have a cohesionWeight, use it here; otherwise keep alignentWeight
-            cohetionDirection = posDirection * alignentWeight;
+            // // If you *do* have a cohesionWeight, use it here; otherwise keep alignentWeight
+            // cohetionDirection = posDirection * alignentWeight;
 
-            if (debugCohesiveness)
-                Debug.DrawRay(currentPositon3, new Vector3(cohetionDirection.x, 0f, cohetionDirection.y), Color.green);
+            // if (debugCohesiveness)
+            //     Debug.DrawRay(currentPositon3, new Vector3(cohetionDirection.x, 0f, cohetionDirection.y), Color.green);
         }
 
         
         // final
-        Vector2 finalDirection = (alignentDirection + cohetionDirection + avoidanceDir).normalized;
-        Debug.DrawRay(currentPositon3, new Vector3(finalDirection.x, 0f, finalDirection.y), Color.blue);
+        Vector2 finalDirection = (-alignentDirection + cohetionDirection + avoidanceDir).normalized;
+        //Debug.DrawRay(currentPositon3, new Vector3(finalDirection.x, 0f, finalDirection.y), Color.blue);
 
         desiredDirection.Invoke(finalDirection);
 
