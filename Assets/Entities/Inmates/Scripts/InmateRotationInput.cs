@@ -29,7 +29,7 @@ public class InmateRotationInput : MonoBehaviour
         Debug.DrawRay(transform.position, new Vector3(desired.x, 0f, desired.y), Color.green);
 
         float signedAngle = Vector2.SignedAngle(currentForward, desired);
-        float steer = Mathf.Clamp(-signedAngle * alignent / fullSteerDegrees, -1f, 1f);
+        //float steer = Mathf.Clamp(-signedAngle * alignent / fullSteerDegrees, -1f, 1f);
         float desiredSteer;
 
         if (Mathf.Abs(signedAngle) < deadZoneDegrees)
