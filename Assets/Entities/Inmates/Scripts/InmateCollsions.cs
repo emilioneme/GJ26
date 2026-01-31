@@ -1,4 +1,3 @@
-using Entities.Inmates;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

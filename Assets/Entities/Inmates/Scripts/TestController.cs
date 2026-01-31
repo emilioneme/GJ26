@@ -1,5 +1,3 @@
-using System;
-using Entities.Inmates;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -7,7 +5,6 @@ public class TestController : MonoBehaviour
 {
     public CharacterController cc;
     public InmateInput input;
-    public GameObject inmateModel;
     
     void Awake()
     {
@@ -17,8 +14,6 @@ public class TestController : MonoBehaviour
     void Update()
     {
         cc.Move(input.forwardDirection * Time.deltaTime);
-        cc.transform.rotation = Quaternion.LookRotation(input.forwardDirection);
-        
+        // cc.transform.rotation = Quaternion.LookRotation(input.forwardDirection);
     }
-    
 }

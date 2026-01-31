@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - private
+  - Inmate
   layers:
   - Default
   - TransparentFX
