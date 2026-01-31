@@ -136,7 +136,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.162
+    m_Value: 0.135
   response:
     m_OverrideState: 1
     m_Value: 0.8
@@ -218,7 +218,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.41
+    m_Value: 0.399
   xMultiplier:
     m_OverrideState: 0
     m_Value: 1
