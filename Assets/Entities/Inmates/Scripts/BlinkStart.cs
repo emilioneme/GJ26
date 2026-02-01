@@ -1,16 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using TMPro;
 
 public class BlinkStart : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] public TMP_Text flashingText;
     void Update()
     {
-        
+        var color = flashingText.color;
+        color.a = Mathf.Abs(Mathf.Sin(Time.time));
+        flashingText.color = color;
     }
+
 }
