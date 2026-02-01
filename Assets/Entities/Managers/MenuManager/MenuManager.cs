@@ -1,3 +1,5 @@
+using DG.Tweening;
+using DG.Tweening.Plugins.Options;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +9,10 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] Slider volumeSlider;
     [SerializeField] Slider sensitivitySlider;
+
+    [SerializeField] GameObject FadeImageGO;
+    [SerializeField] Image FadeImage;
+
 
     void Start()
     {
@@ -19,7 +25,15 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        FadeImageGO.SetActive(false);
+        FadeImage.color = Color.clear;
+        FadeImage.DOColor(Color.black, 1f)
+            .OnComplete(LoadLevel);
+    }
+
+    void LoadLevel()
+    {
+        SceneManager.LoadScene("Level1");
     }
 
     public void SetVolume() 
