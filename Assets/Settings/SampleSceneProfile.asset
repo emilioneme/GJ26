@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ChannelMixer
   active: 1
   redOutRedIn:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 200
   redOutGreenIn:
-    m_OverrideState: 0
-    m_Value: 122
+    m_OverrideState: 1
+    m_Value: 172
   redOutBlueIn:
     m_OverrideState: 1
-    m_Value: 73
+    m_Value: -200
   greenOutRedIn:
     m_OverrideState: 0
     m_Value: 0
@@ -58,13 +58,13 @@ MonoBehaviour:
     m_Value: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.04
   intensity:
     m_OverrideState: 1
     m_Value: 1
   scatter:
     m_OverrideState: 1
-    m_Value: 0.764
+    m_Value: 0.733
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.276
+    m_Value: 0.148
   smoothness:
     m_OverrideState: 1
     m_Value: 0.944
