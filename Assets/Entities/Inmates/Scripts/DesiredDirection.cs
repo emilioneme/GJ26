@@ -6,14 +6,36 @@ public class DesiredDirection : MonoBehaviour
     [SerializeField] Transform[] targets;
     [SerializeField] Transform target;
 
+    public bool randomTarget = false;
+    public bool closestTarget = true;
+
     public UnityEvent<Vector2> onDesiredDirectionUpdated;
 
     private void Start()
     {
-        if (targets.Length > 0)
+        if (targets.Length <= 0)
+            return;
+
+
+        if(randomTarget)
         {
             int randomIndex = Random.Range(0, targets.Length);
             target = targets[randomIndex];
+            return;
+        }
+
+
+        if(!closestTarget)
+            return;
+
+        float minDsit = float.PositiveInfinity;
+        foreach (Transform t in targets)
+        {
+            if(minDsit > Vector3.Distance(transform.position, t.position))
+            {
+                minDsit = Vector3.Distance(transform.position, t.position);
+                target = t;
+            }
         }
     }
 
