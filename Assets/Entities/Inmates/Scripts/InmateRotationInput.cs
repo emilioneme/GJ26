@@ -28,9 +28,9 @@ public class InmateRotationInput : MonoBehaviour
         float steer = Mathf.Clamp(-signedAngle / fullSteerDegrees, -1f, 1f);
         float desiredSteer;
 
-        //if (Mathf.Abs(signedAngle) < deadZoneDegrees)
-        //    desiredSteer = Random.Range(-1, 1);
-        //else
+        if (Mathf.Abs(signedAngle) < deadZoneDegrees)
+            desiredSteer = Random.Range(-1, 1);
+        else
             desiredSteer = Mathf.Clamp(-signedAngle / fullSteerDegrees, -1f, 1f);
 
         currentSteer = Mathf.SmoothDamp(
