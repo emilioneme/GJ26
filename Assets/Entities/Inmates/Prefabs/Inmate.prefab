@@ -252,7 +252,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.488
   m_Pitch: 0.97
   Loop: 0
   Mute: 0
@@ -503,22 +503,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  alignmentWeight: 1
+  avoidanceWeight: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxAvoidanceDist: 2
   maxInmateDistance: 10
   distanceMultiplier: 1
   Inmates: []
-  avoidanceDistance: 10
-  isPlayer: 0
-  batchID: 0
-  avoidanceLayerMask:
-    serializedVersion: 2
-    m_Bits: 5121
-  inmateManager: {fileID: 0}
-  alignentWeight: 1
-  cohesionWeight: 1
-  avoidanceWeight: 1
-  debugAlignent: 1
-  debugCohesiveness: 1
-  debugAvoidance: 1
+  idleInfluence: 0
 --- !u!1 &9002328647586111290
 GameObject:
   m_ObjectHideFlags: 0

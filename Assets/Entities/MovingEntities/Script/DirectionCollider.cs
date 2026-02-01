@@ -10,32 +10,24 @@ public class DirectionCollider : MonoBehaviour
     public UnityEvent<Vector2> averageDirection;
     public UnityEvent<Vector2> desiredDirection;
 
+    [Header("Weights")]
+    [SerializeField] float alignmentWeight = 1f;
+    [SerializeField] float avoidanceWeight = 1f;
+
+    [Header("Settings")]
+    [SerializeField] LayerMask obstacleLayer;
+    [SerializeField] public float maxAvoidanceDist = 5f;
     [SerializeField] public float maxInmateDistance = 10f;
     [SerializeField] public float distanceMultiplier = 1;
     public List<GameObject> Inmates = new List<GameObject>();
 
-    [SerializeField] float avoidanceDistance = 10;
-    [SerializeField] bool isPlayer = false;
-    [SerializeField] int batchID = 0;
-
-    [SerializeField] LayerMask avoidanceLayerMask;
-    [SerializeField] InmateManager inmateManager;
-
-    [SerializeField] float alignentWeight = 1f;
-    [SerializeField] float cohesionWeight = 1f;
-    [SerializeField] float avoidanceWeight = 1f;
-
-    [SerializeField] bool debugAlignent = false;
-    [SerializeField] bool debugCohesiveness = false;
-    [SerializeField] bool debugAvoidance = false;
+    //[SerializeField] float idleInfleunce = 0
+    [SerializeField] bool idleInfluence = false;
 
     private void Awake()
     {
         if (self == null)
             self = transform.root.gameObject; // root of this child
-
-        if (TryGetComponent(out inmateManager))
-            batchID = inmateManager.inmateBatchID;
     }
 
     void Update()
@@ -50,89 +42,55 @@ public class DirectionCollider : MonoBehaviour
         if (Inmates.Count == 0)
         {
             averageDirection.Invoke(Vector2.zero);
+            return;
         }
 
         Vector2 cumulativeDirection = Vector2.zero;
-
-        Vector2 currentPositon = new Vector2(self.transform.position.x, self.transform.position.z);
-        Vector3 currentPositon3 = new Vector3(self.transform.position.x, self.transform.position.y, self.transform.position.z);
-
-        Vector2 comulativePositon = Vector2.zero;
-
         for (int i = Inmates.Count - 1; i >= 0; i--)
         {
             GameObject boid = Inmates[i];
 
-            // distance
             float distance = Vector3.Distance(boid.transform.position, self.transform.position);
             distance = Mathf.Clamp01(distance / maxInmateDistance);
-            float distanceFactor = 1f - distance;
+            float distanceFactor = 1 - distance;
 
-            // alignment (optionally weighted by distanceFactor)
+            //bool isIdle = false;
+            if (boid.TryGetComponent(out MovingController mc))
+            {
+                if (mc.moveInput.magnitude < 0.1f && !idleInfluence)
+                {
+                    Inmates.Remove(boid.gameObject);
+                    continue;
+                }
+            }
+
             Vector2 direction = new Vector2(boid.transform.forward.x, boid.transform.forward.z);
             cumulativeDirection += direction * distanceFactor;
-
-            // cohesion (optionally weighted by distanceFactor)
-            Vector2 position = new Vector2(boid.transform.position.x, boid.transform.position.z);
-            comulativePositon += position * distanceFactor;
         }
 
-        // avoidance
-        RaycastHit raycastHit;
-        Vector2 avoidanceDirection = Vector2.zero;
+        Vector2 avgDirection = cumulativeDirection / Inmates.Count;
+        averageDirection.Invoke(avgDirection.normalized);
+        Vector2 alignentDirection = avgDirection * alignmentWeight;
+        Debug.DrawRay(self.transform.position, new Vector3(alignentDirection.x, 0, alignentDirection.y), Color.green);
 
-        //Debug.DrawRay(currentPositon3, self.transform.forward * avoidanceDistance, Color.red);
-        if (Physics.Raycast(currentPositon3, self.transform.forward, out raycastHit, avoidanceDistance, avoidanceLayerMask))
+        //Avoidance
+        RaycastHit hit;
+        Vector3 avoidanceDirection3 = Vector3.zero;
+        Vector2 avoidanceDirection = Vector3.zero;
+        if (Physics.Raycast(self.transform.position, self.transform.position, out hit, maxAvoidanceDist, obstacleLayer)) 
         {
-            Vector2 hitPos = new Vector2(raycastHit.point.x, raycastHit.point.z);
-
-            // steer AWAY from obstacle
-            avoidanceDirection = (currentPositon - hitPos).normalized;
+            avoidanceDirection = -(self.transform.position - hit.point).normalized;
         }
-
-        Vector2 avoidanceDir = avoidanceDirection * avoidanceWeight;
-
-        if (debugAvoidance)
-        {
-            //Debug.DrawRay(currentPositon3, new Vector3(avoidanceDir.x, 0f, avoidanceDir.y), Color.yellow);
-        }
-            
-
-        Vector2 alignentDirection = Vector2.zero;
-        Vector2 cohetionDirection = Vector2.zero;
-
-        // IMPORTANT: re-check after removals
-        if (Inmates.Count == 0)
-        {
-            averageDirection.Invoke(Vector2.zero);
-        } 
+        if(hit.collider != null)
+            Debug.DrawRay(self.transform.position, avoidanceDirection * maxAvoidanceDist, Color.red);
         else
-        {
-           // alignment
-            Vector2 avgDirection = cumulativeDirection / Inmates.Count;
-            averageDirection.Invoke(avgDirection.normalized);
+            Debug.DrawRay(self.transform.position, self.transform.forward * maxAvoidanceDist, Color.red);
+        avoidanceDirection = new Vector2(avoidanceDirection3.x, avoidanceDirection3.z) * avoidanceWeight;
 
-            alignentDirection = avgDirection.normalized * alignentWeight;
-            if (debugAlignent)
-                Debug.DrawRay(currentPositon3, new Vector3(alignentDirection.x, 0f, alignentDirection.y), Color.yellow);
 
-            // cohesion
-            // Vector2 avgPosition = comulativePositon / Inmates.Count;
-            // Vector2 posDirection = (avgPosition - currentPositon).normalized;
-
-            // // If you *do* have a cohesionWeight, use it here; otherwise keep alignentWeight
-            // cohetionDirection = posDirection * alignentWeight;
-
-            // if (debugCohesiveness)
-            //     Debug.DrawRay(currentPositon3, new Vector3(cohetionDirection.x, 0f, cohetionDirection.y), Color.green);
-        }
-
-        
-        // final
-        Vector2 finalDirection = (-alignentDirection + cohetionDirection + avoidanceDir).normalized;
-        //Debug.DrawRay(currentPositon3, new Vector3(finalDirection.x, 0f, finalDirection.y), Color.blue);
-
-        desiredDirection.Invoke(finalDirection);
+        Vector2 finalDirection = (alignentDirection + avoidanceDirection).normalized;
+        desiredDirection.Invoke((finalDirection).normalized);
+        Debug.DrawRay(self.transform.position, new Vector3(finalDirection.x, 0, finalDirection.y) * 5f, Color.blue);
 
     }
 
@@ -153,3 +111,4 @@ public class DirectionCollider : MonoBehaviour
         }
     }
 }
+

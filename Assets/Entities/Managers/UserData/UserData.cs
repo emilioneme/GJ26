@@ -17,9 +17,16 @@ public class UserData : MonoBehaviour
         }
     }
 
+    [SerializeField] AudioListener audioListener;
+
     [SerializeField] public float volume = 1.0f;
 
     [SerializeField] public float sensitiviy = 0;
+
+    void Start()
+    {
+        SetVolume(volume);
+    }
 
     private void OnEnable()
     {
@@ -31,8 +38,14 @@ public class UserData : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoad;
     }
 
+    public void SetVolume(float value) 
+    {
+        AudioListener.volume = 1f;
+        volume = value;
+    }
+
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        // your logic here
+        SetVolume(volume);
     }
 }
