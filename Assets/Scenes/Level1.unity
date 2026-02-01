@@ -12005,7 +12005,7 @@ MonoBehaviour:
   damageCooldown: 1
   minBlendingEfficacy: 0.5
   healMultiplier: 0.3
-  damageMultiplier: 3
+  damageMultiplier: 5
   playerTarget: 0
 --- !u!114 &1676980235
 MonoBehaviour:
