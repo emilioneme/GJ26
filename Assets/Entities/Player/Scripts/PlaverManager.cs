@@ -144,6 +144,7 @@ public class PlaverManager : MonoBehaviour
                         ladderUnlocked = true;
                         ForceDialogue(alarmTriggeredInnerDialogues);
                         alarmTriggered.Invoke(transform.position);
+                        
                     }
                 }
             }

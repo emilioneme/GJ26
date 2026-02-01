@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public AudioSource Scaryaudio;
     public static GameManager Instance { get; set; }
     public  float health = 10f;
     public int numberOfBacthes = 20;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject BridgeBlocker;
     public Transform EndingTransform;
+    AudioSource watchedAudio;
 
 
 
@@ -46,13 +48,35 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sp = spotlight.GetComponent<SpotlightSpin>();
-
+        watchedAudio = spotlight.transform.GetComponent<AudioSource>();
+        
 
         
 
     }
 
+    public void PlayWatchedAudio()
+    {
+        if (!watchedAudio.isPlaying)
+        {
+            watchedAudio.Play();
+        }
+    }
 
+    public void StopWatchedAudio()
+    {
+        if (watchedAudio.isPlaying)
+        {
+            watchedAudio.Stop();
+        }
+    }
+
+    public void PlayScary()
+    {
+        Scaryaudio.Play();
+    }
+
+    
     public void TakeDamage(float damage)
     {
         health -= damage;
