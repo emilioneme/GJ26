@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     SpotlightSpin sp;
 
+    public GameObject BridgeBlocker;
+    public Transform EndingTransform;
 
 
     private void Awake()

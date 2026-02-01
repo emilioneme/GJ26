@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.ComponentModel;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -21,8 +22,6 @@ public class PlaverManager : MonoBehaviour
     public UnityEvent climbingLadder; // for sounds
 
     [Header("Tower Ending")]
-    [SerializeField] Transform TowerLight;
-    [SerializeField] GameObject brdigeBlocker;
     [SerializeField] float maxEndingDist;
     [SerializeField] Color endingColor = Color.white;
 
@@ -185,7 +184,8 @@ public class PlaverManager : MonoBehaviour
 
                 if(playerInputHandler.InteractAction.WasCompletedThisFrame()) 
                 {
-                    Destroy(hit.transform.root);
+                    GameObject go = hit.transform.gameObject;
+                    Destroy(go, 1f);
                     ForceDialogue(valuableCollectedDialogue);
                 }
             }
@@ -200,7 +200,7 @@ public class PlaverManager : MonoBehaviour
                     if (playerInputHandler.InteractAction.WasCompletedThisFrame()) 
                     {
                         bridgeLocked = true;
-                        brdigeBlocker.SetActive(false);
+                        GameManager.Instance.BridgeBlocker.SetActive(false);
                         FadeImage.color = Color.clear;
                         riotStarted.Invoke(transform.position);
                         ForceDialogue(rioterChantDialogue);
@@ -220,7 +220,7 @@ public class PlaverManager : MonoBehaviour
 
         if (!bridgeLocked) 
         {
-            float distance = Mathf.Clamp(Vector3.Distance(transform.position, TowerLight.position), 0, maxEndingDist) / maxEndingDist;
+            float distance = Mathf.Clamp(Vector3.Distance(transform.position, GameManager.Instance.EndingTransform.position), 0, maxEndingDist) / maxEndingDist;
             float inverse = 1 - distance;
             FadeImage.color = Color.Lerp(Color.clear, endingColor, inverse);
         }
