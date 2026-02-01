@@ -31,32 +31,36 @@ public class SpotlightSpin : MonoBehaviour
         //     return;
         // }
         if (playerTarget)
-    {
-        Vector3 playerDirection =
-            (transform.position - GameManager.Instance.player.transform.position).normalized;
+        {
+            this.GetComponent<SpotlightCollider>().playerTarget = true;
 
-        // smooth offsets (replace Random.Range)
-        float yawOffset =
-            (Mathf.PerlinNoise(Time.time * wobbleSpeed, yawSeed) - 0.5f) * yawWobble;
+            Vector3 playerDirection =
+                (transform.position - GameManager.Instance.player.transform.position).normalized;
 
-        float pitchOffset =
-            (Mathf.PerlinNoise(Time.time * wobbleSpeed, pitchSeed) - 0.5f) * pitchWobble;
+            // smooth offsets (replace Random.Range)
+            float yawOffset =
+                (Mathf.PerlinNoise(Time.time * wobbleSpeed, yawSeed) - 0.5f) * yawWobble;
 
-        Vector3 zeroedPlayerDir = new Vector3(
-            playerDirection.x + yawOffset,
-            0,
-            playerDirection.z + yawOffset
-        );
+            float pitchOffset =
+                (Mathf.PerlinNoise(Time.time * wobbleSpeed, pitchSeed) - 0.5f) * pitchWobble;
 
-        // base rotation (unchanged logic)
-        transform.rotation = Quaternion.LookRotation(zeroedPlayerDir);
+            Vector3 zeroedPlayerDir = new Vector3(
+                playerDirection.x + yawOffset,
+                0,
+                playerDirection.z + yawOffset
+            );
 
-        // spotlight vertical rotation (unchanged logic + pitch)
-        spotlightOnRail.transform.rotation =
-            Quaternion.LookRotation(playerDirection + Vector3.up * pitchOffset);
+            // base rotation (unchanged logic)
+            transform.rotation = Quaternion.LookRotation(zeroedPlayerDir);
 
-        return;
-    }
+            // spotlight vertical rotation (unchanged logic + pitch)
+            spotlightOnRail.transform.rotation =
+                Quaternion.LookRotation(playerDirection + Vector3.up * pitchOffset);
+
+            return;
+        }
+
+        this.GetComponent<SpotlightCollider>().playerTarget = false;
 
         Vector3 direction = (transform.position - spotlightTarget.transform.position).normalized;
         Vector3 zeroedDir = new Vector3(direction.x, 0, direction.z);
