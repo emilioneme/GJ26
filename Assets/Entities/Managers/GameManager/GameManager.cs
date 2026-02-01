@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public GameObject BridgeBlocker;
     public Transform EndingTransform;
     AudioSource watchedAudio;
+
+    [SerializeField] public AudioSource highAlertAudio;
 
 
 
@@ -93,6 +96,8 @@ public class GameManager : MonoBehaviour
         {
             alertBarAmount = 75;
         }
+
+
     }
 
 
