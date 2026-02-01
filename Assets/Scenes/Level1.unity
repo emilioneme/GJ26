@@ -2456,6 +2456,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &386253416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6403309118223377689, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
+  m_PrefabInstance: {fileID: 1326891756055902373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &404015046
 GameObject:
   m_ObjectHideFlags: 0
@@ -6926,6 +6931,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a60a148a4ee2d141bb0febc5a20ed1e, type: 3}
+--- !u!1 &1140945534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1046590787747558203, guid: c8392a1b6ca0962408d6d45c2f297d86, type: 3}
+  m_PrefabInstance: {fileID: 991317068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1140945535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4898679271547024473, guid: c8392a1b6ca0962408d6d45c2f297d86, type: 3}
@@ -8206,8 +8216,8 @@ MonoBehaviour:
   numberOfBacthes: 7
   alertBarAmount: 0
   alertLevel: 0
-  player: {fileID: 0}
-  spotlight: {fileID: 0}
+  player: {fileID: 386253416}
+  spotlight: {fileID: 1140945534}
 --- !u!4 &1369258627
 Transform:
   m_ObjectHideFlags: 0
