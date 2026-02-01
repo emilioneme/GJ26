@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject spotlight;
 
+    public string level;
 
 
 
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        level = SceneManager.GetActiveScene().name;
     }
 
 
@@ -52,24 +55,33 @@ public class GameManager : MonoBehaviour
     {
         alertBarAmount += alertAmount;
 
-        if(alertBarAmount > 33 && alertLevel < 66 && alertLevel != 1)
+        if((alertBarAmount > 33 && alertBarAmount < 66 && alertLevel != 1) || level.Equals("Level2") && alertLevel != 1 && alertBarAmount < 66)
         {
             spotlight.GetComponent<SpotlightSpin>().playerTarget = false;
+            spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
             alertLevel = 1;
             Debug.Log("alert level: " + alertLevel);
         }
         if(alertBarAmount > 66 && alertLevel != 2)
         {
             spotlight.GetComponent<SpotlightSpin>().playerTarget = true;
+            spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = false;
             alertLevel = 2;
             Debug.Log("alert level: " + alertLevel);
 
         }
-        if(alertBarAmount < 33 && alertLevel > 0)
+        if(alertBarAmount < 33 && alertLevel > 0 && !level.Equals("Level2"))
         {
             spotlight.GetComponent<SpotlightSpin>().playerTarget = false;
+            spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
             alertLevel = 0;
             Debug.Log("alert level: " + alertLevel);
+        }
+
+        if(alertBarAmount >= 100)
+        {
+            SceneManager.LoadScene("MenuScene");
+            Debug.Log("Player has died.");
         }
     }
 

@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class SpotlightCollider : MonoBehaviour
 {
-    [SerializeField] float damageCooldown = 1f;
+    [SerializeField] float damageCooldown = 0.5f;
     [SerializeField] float minBlendingEfficacy = 0.5f;
 
     BlendingHandler blendingHandler;
+
+    public bool playerTarget;
+    
     
     float lastTimeDamaged = 0;
 
     public void Update()
     {
+        if (playerTarget)
+        {
+            blendingHandler = GameManager.Instance.player.GetComponent<BlendingHandler>();
+        }
+
         if (blendingHandler == null)
             return;
 
