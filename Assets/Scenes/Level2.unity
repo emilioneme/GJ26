@@ -2114,7 +2114,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191012696}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10994,6 +10994,8 @@ MonoBehaviour:
   player: {fileID: 584562876}
   spotlight: {fileID: 1768684111}
   level: 
+  BridgeBlocker: {fileID: 191012696}
+  EndingTransform: {fileID: 749143597}
 --- !u!4 &1369258627
 Transform:
   m_ObjectHideFlags: 0
@@ -18087,22 +18089,6 @@ PrefabInstance:
     - target: {fileID: 6403309118223377689, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: TowerLight
-      value: 
-      objectReference: {fileID: 749143597}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: brdigeBlocker
-      value: 
-      objectReference: {fileID: 191012696}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: textCooldownFactor
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: textCharacterCooldown
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

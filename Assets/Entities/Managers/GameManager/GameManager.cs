@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     SpotlightSpin sp;
 
+    public GameObject BridgeBlocker;
+    public Transform EndingTransform;
+
 
 
     private void Awake()
@@ -43,6 +46,10 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sp = spotlight.GetComponent<SpotlightSpin>();
+
+
+        
+
     }
 
 

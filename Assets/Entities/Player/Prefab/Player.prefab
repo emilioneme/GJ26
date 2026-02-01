@@ -807,9 +807,9 @@ MonoBehaviour:
     m_Bits: 67108864
   bridgeLockedDialogues:
   - i cant go through or i will not blend in
-  textCharacterCooldown: 0.2
-  textCharacterRemoveCooldown: 0.1
-  textCooldownFactor: 0.2
+  textCharacterCooldown: 0.05
+  textCharacterRemoveCooldown: 0.001
+  textCooldownFactor: 0.1
 --- !u!1 &6789573465357602942
 GameObject:
   m_ObjectHideFlags: 0
