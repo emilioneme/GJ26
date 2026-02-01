@@ -9,7 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction LookAction;
     InputAction MoveAction;
     InputAction SprintAction;
-    InputAction InteractAction;
+    public InputAction InteractAction;
 
     [SerializeField] UnityEvent<Vector2> onMove;
 

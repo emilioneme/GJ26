@@ -513,6 +513,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeeaca49c596da747b4ed8c59b80b650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
+  InteractAction:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bbaf0091-8be0-4bfe-a9ea-95ff176c47bb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   onMove:
     m_PersistentCalls:
       m_Calls:
@@ -622,11 +631,16 @@ MonoBehaviour:
   guardLayer:
     serializedVersion: 2
     m_Bits: 524288
-  lockedLadderText: '''Too Risky'''
-  ladderText: '''might as well while I can'''
-  alarmTextText: '''fuck maybe a should trigger this alarm...'
-  prisonGuardText: 'Guard: ''keep walking'''
-  NPC: 'Alfred: ''you know what ehy do to people like us, keep walkinh'''
+  lockedLadderText: a way up
+  ladderText: the guard are gone, maybe now is the time
+  alarmTextText: im going to turn off this fcking light
+  alarmTiggeredTextText: fuck the guards will be on me
+  prisonGuardText: '"hawVDAWHDVAJHDW yawGHD ioAWD AWD am hgonnas getchuuuu wiwiiwiuwiuwwuwu
+    hnehbheheheee"'
+  NPCHint: '"it must be usfull that ladder"'
+  NPCAfterHint: '"go while you can"'
+  textCharacterCooldown: 0.05
+  textCooldownFactor: 0.01
 --- !u!1 &6789573465357602942
 GameObject:
   m_ObjectHideFlags: 0
