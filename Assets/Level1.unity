@@ -9759,6 +9759,8 @@ MonoBehaviour:
   player: {fileID: 386253416}
   spotlight: {fileID: 1140945534}
   level: 
+  BridgeBlocker: {fileID: 0}
+  EndingTransform: {fileID: 0}
 --- !u!4 &1369258627
 Transform:
   m_ObjectHideFlags: 0
@@ -16747,7 +16749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4279955861809831174
 GameObject:
   m_ObjectHideFlags: 0
