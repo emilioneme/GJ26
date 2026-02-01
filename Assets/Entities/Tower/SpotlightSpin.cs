@@ -32,7 +32,7 @@ public class SpotlightSpin : MonoBehaviour
         // }
         if (playerTarget)
         {
-            this.GetComponent<SpotlightCollider>().playerTarget = true;
+            spotlightTarget.GetComponent<SpotlightCollider>().playerTarget = true;
 
             Vector3 playerDirection =
                 (transform.position - GameManager.Instance.player.transform.position).normalized;
@@ -60,7 +60,7 @@ public class SpotlightSpin : MonoBehaviour
             return;
         }
 
-        this.GetComponent<SpotlightCollider>().playerTarget = false;
+        spotlightTarget.GetComponent<SpotlightCollider>().playerTarget = false;
 
         Vector3 direction = (transform.position - spotlightTarget.transform.position).normalized;
         Vector3 zeroedDir = new Vector3(direction.x, 0, direction.z);
