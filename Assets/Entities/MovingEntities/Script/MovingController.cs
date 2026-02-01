@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class MovingController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] public float moveSpeed = 5f;
     [SerializeField] float maxSprintSpeed = 5f;
     float sprintSpeed = 0;
 
