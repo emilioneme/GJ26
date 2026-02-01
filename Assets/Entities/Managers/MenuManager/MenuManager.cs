@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        FadeImageGO.SetActive(false);
+        FadeImageGO.SetActive(true);
         FadeImage.color = Color.clear;
         FadeImage.DOColor(Color.black, 1f)
             .OnComplete(LoadLevel);
