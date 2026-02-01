@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class DesiredDirection : MonoBehaviour
 {
     [SerializeField] Transform[] targets;
-    [SerializeField] Transform target;
+    [SerializeField] public Transform target;
 
     public bool randomTarget = false;
     public bool closestTarget = true;

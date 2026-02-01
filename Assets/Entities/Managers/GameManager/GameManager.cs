@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public string level;
 
+    SpotlightSpin sp;
+
 
 
     private void Awake()
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        sp = spotlight.GetComponent<SpotlightSpin>();
     }
 
 
@@ -53,6 +56,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void HighAlert()
+    {
+        if(alertBarAmount < 75)
+        {
+            alertBarAmount = 75;
+        }
+    }
+
 
     public void RaiseAlert(float alertAmount)
     {
@@ -60,23 +71,23 @@ public class GameManager : MonoBehaviour
 
         if((alertBarAmount > 33 && alertBarAmount < 66 && alertLevel != 1) || level.Equals("Level2") && alertLevel != 1 && alertBarAmount < 66)
         {
-            spotlight.GetComponent<SpotlightSpin>().SetPlayerTarget(false);
-            spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
+            sp.SetPlayerTarget(false);
+            sp.spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
             alertLevel = 1;
             Debug.Log("alert level: " + alertLevel);
         }
         if(alertBarAmount > 66 && alertLevel != 2)
         {
-            spotlight.GetComponent<SpotlightSpin>().SetPlayerTarget(true);
-            spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = false;
+            sp.SetPlayerTarget(true);
+            sp.spotlightTarget.GetComponent<SpotlightCollider>().enabled = false;
             alertLevel = 2;
             Debug.Log("alert level: " + alertLevel);
 
         }
         if(alertBarAmount < 33 && alertLevel > 0 && !level.Equals("Level2"))
         {
-            spotlight.GetComponent<SpotlightSpin>().SetPlayerTarget(false);
-            spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
+            sp.SetPlayerTarget(false);
+            sp.spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
             alertLevel = 0;
             Debug.Log("alert level: " + alertLevel);
         }

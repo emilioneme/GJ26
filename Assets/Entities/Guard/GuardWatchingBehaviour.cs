@@ -65,6 +65,13 @@ public class GuardWatchingBehaviour : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction);
     }
 
+    public void RunToTarget(Vector3 target)
+    {
+        GameObject dummy = new GameObject("RunTarget");
+        dummy.transform.position = target;
+        dd.target = dummy.transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
