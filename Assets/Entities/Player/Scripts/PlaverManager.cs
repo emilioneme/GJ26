@@ -73,7 +73,7 @@ public class PlaverManager : MonoBehaviour
 
     bool ladderUnlocked = false;
 
-    bool bridgeLocked = true;
+    bool hasAccessToBrdige = false;
     bool hasValuable = false;
 
     string lastDialogue;
@@ -139,7 +139,7 @@ public class PlaverManager : MonoBehaviour
                 {
                     SetDialogue(alarmInnerDialogues);
                     Debug.Log("alarm inner dialogue");
-                    if (playerInputHandler.InteractAction.WasCompletedThisFrame()) 
+                    if (playerInputHandler.InteractAction.WasPerformedThisFrame()) 
                     {
                         ladderUnlocked = true;
                         ForceDialogue(alarmTriggeredInnerDialogues);
@@ -158,7 +158,7 @@ public class PlaverManager : MonoBehaviour
                 else 
                 {
                     SetDialogue(ladderUnlockedInnerDialogue);
-                    if (playerInputHandler.InteractAction.WasCompletedThisFrame())
+                    if (playerInputHandler.InteractAction.WasPerformedThisFrame())
                     {
                         ClimbLadder();
                     }
@@ -171,9 +171,9 @@ public class PlaverManager : MonoBehaviour
             //Helper2
             if (((1 << layer) & helper2Layer) != 0)
             {
-                if (bridgeLocked && !hasValuable)
+                if (!hasAccessToBrdige && !hasValuable)
                     SetDialogue(helper2ValuableDialogue);
-                else if (bridgeLocked)
+                else if (!hasAccessToBrdige)
                     SetDialogue(helper2ValuableDialogue);
             }
 
@@ -182,10 +182,11 @@ public class PlaverManager : MonoBehaviour
             {
                 SetDialogue(valuableDialogue);
 
-                if(playerInputHandler.InteractAction.WasCompletedThisFrame()) 
+                if(playerInputHandler.InteractAction.WasPerformedThisFrame()) 
                 {
                     GameObject go = hit.transform.gameObject;
-                    Destroy(go, 1f);
+                    hasValuable = true;
+                    Destroy(go, .1f);
                     ForceDialogue(valuableCollectedDialogue);
                 }
             }
@@ -193,43 +194,61 @@ public class PlaverManager : MonoBehaviour
             //Rioter
             if (((1 << layer) & rioterLayer) != 0)
             {
-                if (hasValuable && bridgeLocked) 
+                if (!hasAccessToBrdige)
                 {
+                    Debug.Log("cant start rtiot");
                     SetDialogue(rioterDialogue);
+                }
 
-                    if (playerInputHandler.InteractAction.WasCompletedThisFrame()) 
+                if (hasValuable && !hasAccessToBrdige && playerInputHandler.InteractAction.WasCompletedThisFrame())
+                {
+                    FadeImageGO.SetActive(true);
+
+                    ForceDialogue(rioterChantDialogue);
+
+                    hasAccessToBrdige = true;
+                    GameManager.Instance.BridgeBlocker.SetActive(false);
+
+                    riotStarted.Invoke(transform.position);
+
+                    ForceDialogue(rioterChantDialogue);
+
+                    return;
+                }
+                else 
+                {
+                    if (!hasAccessToBrdige)
                     {
-                        bridgeLocked = true;
-                        GameManager.Instance.BridgeBlocker.SetActive(false);
-                        FadeImage.color = Color.clear;
-                        riotStarted.Invoke(transform.position);
-                        ForceDialogue(rioterChantDialogue);
+                        Debug.Log("cant start rtiot");
+                        SetDialogue(rioterDialogue);
                     }
                 }
+                
             }
 
             //Bridge
             if (((1 << layer) & bridgeLayer) != 0) 
             {
-                if (bridgeLocked) 
+                if (!hasAccessToBrdige) 
                 {
                     SetDialogue(bridgeLockedDialogues);
                 }
             }
         }
 
-        if (!bridgeLocked) 
+        if (hasAccessToBrdige) 
         {
-            float distance = Mathf.Clamp(Vector3.Distance(transform.position, GameManager.Instance.EndingTransform.position), 0, maxEndingDist) / maxEndingDist;
-            float inverse = 1 - distance;
+            float distance = Vector3.Distance(transform.position, GameManager.Instance.EndingTransform.position);
+            float normalize = Mathf.Clamp01(distance / maxEndingDist);
+            float inverse = 1 - normalize;
             FadeImage.color = Color.Lerp(Color.clear, endingColor, inverse);
+
+            if (inverse > .9f) 
+            {
+                LoadScene("TitleScreen");
+            }
         }
 
-    }
-
-    public void UnlockBridge() 
-    {
-        hasValuable = true;
     }
 
     public void ClimbLadder() 
@@ -251,10 +270,9 @@ public class PlaverManager : MonoBehaviour
         if (textAppearRoutine != null)
             StopCoroutine(textAppearRoutine);
 
-        InteractionText.text = "";
-
-        lastDialogue = null; // or "" — just something that won't match
-        SetDialogue(dialogues);
+        int i = Random.Range(0, dialogues.Length);
+        string text = dialogues[i];
+        textAppearRoutine = StartCoroutine(TextAppearCoroutine(text));
     }
 
     void SetDialogue(string[] dialogues)
@@ -289,9 +307,8 @@ public class PlaverManager : MonoBehaviour
 
         float textCooldown = text.Length * textCooldownFactor;
         yield return new WaitForSeconds(textCooldown);
-
-        textAppearRoutine = null;
         textDisappearRoutine = StartCoroutine(TextDissapearCoroutine(text));
+        textAppearRoutine = null;
     }
 
     IEnumerator TextDissapearCoroutine(string text)
@@ -304,7 +321,6 @@ public class PlaverManager : MonoBehaviour
             InteractionText.text = currentText;
             yield return new WaitForSeconds(textCharacterRemoveCooldown);
         }
-
         textDisappearRoutine = null;
     }
 

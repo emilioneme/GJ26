@@ -730,9 +730,7 @@ MonoBehaviour:
   climbingLadder:
     m_PersistentCalls:
       m_Calls: []
-  TowerLight: {fileID: 0}
-  brdigeBlocker: {fileID: 0}
-  maxEndingDist: 5
+  maxEndingDist: 15
   endingColor: {r: 1, g: 1, b: 1, a: 1}
   interactionDistance: 2
   interactionRadius: 0.5
@@ -785,7 +783,8 @@ MonoBehaviour:
   - get weapons and unite
   - talk to our leader
   - our leader is somehwere
-  helper2RioterDialogue: []
+  helper2RioterDialogue:
+  - hide your weapons, if you dont have one get one
   valuableLayer:
     serializedVersion: 2
     m_Bits: 268435456
@@ -1235,7 +1234,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 32
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
