@@ -14,16 +14,23 @@ public class PlaverManager : MonoBehaviour
     [SerializeField] Transform pivot;
     [SerializeField] GameObject FadeImageGO;
     [SerializeField] UnityEngine.UI.Image FadeImage;
+    [SerializeField] UnityEngine.UI.Image VignneteImage;
     //[SerializeField] GameObject InteractionTextGO;
     [SerializeField] TMP_Text InteractionText;
 
     public UnityEvent<Vector3> alarmTriggered;
     public UnityEvent<Vector3> riotStarted;
     public UnityEvent climbingLadder; // for sounds
+    [Header("VIgnette")]
+    [SerializeField] Color fromColor;
+    [SerializeField] Color toColor;
+
+
 
     [Header("Tower Ending")]
     [SerializeField] float maxEndingDist;
     [SerializeField] Color endingColor = Color.white;
+    [SerializeField] float alphaFactor = .5f;
 
     [Header("interactiveness")]
     [SerializeField] float interactionDistance = 2f;
@@ -96,11 +103,19 @@ public class PlaverManager : MonoBehaviour
         {
             FadeImageGO.SetActive(false);
         });
+
+        VignneteImage.color = fromColor;
     }
 
 
     public void Update()
     {
+        float t = GameManager.Instance.alertBarAmount / 100;
+        VignneteImage.color = Color.Lerp(fromColor, toColor, t);
+        float a = t * alphaFactor;
+        VignneteImage.color = new Color(VignneteImage.color.r, VignneteImage.color.g, VignneteImage.color.b, t);
+
+
         RaycastHit hit;
         if (Physics.SphereCast(pivot.transform.position, interactionRadius, pivot.transform.forward, out hit, interactionDistance))
         {

@@ -15175,6 +15175,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
+      propertyPath: toColor.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
+      propertyPath: fromColor.a
+      value: 0.45882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: alarmTriggered.m_PersistentCalls.m_Calls.Array.size
       value: 4
       objectReference: {fileID: 0}

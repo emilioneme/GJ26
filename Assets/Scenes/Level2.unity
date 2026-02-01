@@ -5844,6 +5844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UserData
       objectReference: {fileID: 0}
+    - target: {fileID: 4588910480936214394, guid: 2dbaec8ab73171b4c8ffe6bb8159a7f1, type: 3}
+      propertyPath: volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4662386045868906410, guid: 2dbaec8ab73171b4c8ffe6bb8159a7f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.45258
