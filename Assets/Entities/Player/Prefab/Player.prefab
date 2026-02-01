@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 8448024773773889667}
   - component: {fileID: 5556573993898251065}
   - component: {fileID: 259060450353339824}
+  - component: {fileID: 8862268115686011284}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -591,6 +592,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BlendingHandler
   currentBlendingEfficacy: 0
   standingTarget: {fileID: 0}
+--- !u!114 &8862268115686011284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403309118223377689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a630679e2cf8b5488ce35d7df5cc8ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaverManager
+  pivot: {fileID: 6705350200125114034}
+  FadeImageGO: {fileID: 0}
+  FadeImage: {fileID: 0}
+  InteractionText: {fileID: 0}
+  interactionDistance: 2
+  interactionRadius: 0.5
+  ladderLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  alarmLayer:
+    serializedVersion: 2
+    m_Bits: 2097152
+  NPCLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
+  guardLayer:
+    serializedVersion: 2
+    m_Bits: 524288
+  lockedLadderText: '''Too Risky'''
+  ladderText: '''might as well while I can'''
+  alarmTextText: '''fuck maybe a should trigger this alarm...'
+  prisonGuardText: 'Guard: ''keep walking'''
+  NPC: 'Alfred: ''you know what ehy do to people like us, keep walkinh'''
 --- !u!1 &6789573465357602942
 GameObject:
   m_ObjectHideFlags: 0
