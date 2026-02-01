@@ -9781,6 +9781,7 @@ MonoBehaviour:
   level: 
   BridgeBlocker: {fileID: 0}
   EndingTransform: {fileID: 0}
+  highAlertAudio: {fileID: 0}
 --- !u!4 &1369258627
 Transform:
   m_ObjectHideFlags: 0
@@ -15212,6 +15213,18 @@ PrefabInstance:
     - target: {fileID: 2120887138843969521, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573246926302812164, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573246926302812164, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573246926302812164, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 4654943494614378708, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: m_LocalPosition.x
