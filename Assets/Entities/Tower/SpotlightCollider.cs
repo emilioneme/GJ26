@@ -20,7 +20,7 @@ public class SpotlightCollider : MonoBehaviour
             if(blendingHandler.currentBlendingEfficacy < minBlendingEfficacy)
             {
                 float damage = Mathf.InverseLerp(1 - minBlendingEfficacy, -1, blendingHandler.currentBlendingEfficacy);
-                GameManager.Instance.TakeDamage(damage);
+                GameManager.Instance.RaiseAlert(damage);
                 //Debug.Log(damage);
                 lastTimeDamaged = Time.time;
             }

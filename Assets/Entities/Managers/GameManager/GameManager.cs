@@ -4,6 +4,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; set; }
+    public  float health = 10f;
+    public int numberOfBacthes = 20;
+
+    public float alertBarAmount = 0;
+    public int alertLevel = 0;
+
+
+
 
     private void Awake()
     {
@@ -17,14 +25,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int numberOfBacthes = 20;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    public  float health = 10f;
 
     public void TakeDamage(float damage)
     {
@@ -36,5 +43,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public void RaiseAlert(float alertAmount)
+    {
+        alertBarAmount += alertAmount;
+
+        if(alertBarAmount > 33 && alertLevel < 66)
+        {
+            alertLevel = 1;
+            Debug.Log("alert level: " + alertLevel);
+        }
+        if(alertBarAmount > 66)
+        {
+            alertLevel = 2;
+            Debug.Log("alert level: " + alertLevel);
+        }
+        if(alertBarAmount < 33 && alertLevel > 0)
+        {
+            alertLevel = 0;
+            Debug.Log("alert level: " + alertLevel);
+        }
+    }
 
 }

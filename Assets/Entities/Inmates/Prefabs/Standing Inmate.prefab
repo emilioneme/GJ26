@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d389e05dc9f9644b80fed0e6258edd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StandingInmateRotation
+  groupTarget: {fileID: 0}
 --- !u!1 &9002328647586111290
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +223,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5480537080672106691}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0ae81d0b29fcb0a4aa62b3472c2b6a61, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 23ded2f2affc8064991d5665834ca701, type: 3}
   m_Controller: {fileID: 9100000, guid: bada0b9a203ec3a4986c54172c4d58d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

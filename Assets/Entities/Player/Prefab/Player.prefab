@@ -482,7 +482,6 @@ MonoBehaviour:
   xRotationSpeed: 100
   yRotationSpeed: 100
   pitchTransform: {fileID: 6705350200125114034}
-  bounceCooldown: 3
 --- !u!114 &8448024773773889667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlendingHandler
   currentBlendingEfficacy: 0
+  standingTarget: {fileID: 0}
 --- !u!1 &6789573465357602942
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,3 +790,6 @@ MonoBehaviour:
   alignentWeight: 1
   cohesionWeight: 1
   avoidanceWeight: 1
+  debugAlignent: 0
+  debugCohesiveness: 0
+  debugAvoidance: 0
