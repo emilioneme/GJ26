@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         }
 
         level = SceneManager.GetActiveScene().name;
+        Debug.Log(level);
+        Debug.Log(level.Equals("Level2"));
     }
 
 
