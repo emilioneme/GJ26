@@ -17,8 +17,6 @@ public class UserData : MonoBehaviour
         }
     }
 
-    [SerializeField] AudioListener audioListener;
-
     [SerializeField] public float volume = 1.0f;
 
     [SerializeField] public float sensitiviy = 0;
