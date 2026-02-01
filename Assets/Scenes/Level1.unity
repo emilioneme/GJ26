@@ -9675,7 +9675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86c47a31da12ab4b9183c84526931c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  Scaryaudio: {fileID: 0}
+  Scaryaudio: {fileID: 1635078084}
   health: 10
   numberOfBacthes: 7
   alertBarAmount: 0
@@ -12005,7 +12005,7 @@ MonoBehaviour:
   damageCooldown: 1
   minBlendingEfficacy: 0.5
   healMultiplier: 0.3
-  damageMultiplier: 7
+  damageMultiplier: 10
   playerTarget: 0
 --- !u!114 &1676980235
 MonoBehaviour:

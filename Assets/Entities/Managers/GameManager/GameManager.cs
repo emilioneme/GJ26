@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
         if(alertBarAmount >= 100)
         {
-            SceneManager.LoadScene("MenuScene");
+            SceneManager.LoadScene("TitleScreen");
             Debug.Log("Player has died.");
         }
 
