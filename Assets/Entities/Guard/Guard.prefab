@@ -2398,12 +2398,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6946208567082938651}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: 02ada32cc4f52824c82929900f8762d4, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.119
   m_Pitch: 0.97
   Loop: 0
@@ -2502,14 +2502,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioObjectPlayer
   pitchRandomizerOffset: 0
   AudioClips:
-  - {fileID: 8300000, guid: 9b8ba9095dcfa284c8e091e39dec5314, type: 3}
   - {fileID: 8300000, guid: 02ada32cc4f52824c82929900f8762d4, type: 3}
-  - {fileID: 8300000, guid: 32d7d40a8e7ad4a4e86e751a9d237fcf, type: 3}
-  - {fileID: 8300000, guid: bd276346cb17aaa4ea89605fc506cb5b, type: 3}
-  - {fileID: 8300000, guid: 76aa0fe5fdaaf4647ae4aa599ca40821, type: 3}
-  loop: 1
+  loop: 0
   automaticDestroy: 0
-  playOnStart: 1
+  playOnStart: 0
   playOnEnable: 0
 --- !u!114 &3431014012611867952
 MonoBehaviour:

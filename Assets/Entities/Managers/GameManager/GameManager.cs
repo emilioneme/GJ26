@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
 
 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -43,6 +44,10 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sp = spotlight.GetComponent<SpotlightSpin>();
+
+
+        
+
     }
 
 

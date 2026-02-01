@@ -9,18 +9,23 @@ public class GuardWatchingBehaviour : MonoBehaviour
     [SerializeField] LayerMask layerMask;
     [SerializeField] float sphereCastRadius = 3f;
     [SerializeField] public Animator an;
+    
     BlendingHandler blendingHandler;
     float lastTimeDamaged = 0;
 
     MovingController mc;
     DesiredDirection dd;
     InmateRotationInput ri;
+    AudioSource audio;
+
+    bool hasPlayedIdleSound = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mc = transform.GetComponent<MovingController>();
         dd = transform.GetComponent<DesiredDirection>();
         ri = transform.GetComponent<InmateRotationInput>();
+        audio = transform.GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -53,10 +58,16 @@ public class GuardWatchingBehaviour : MonoBehaviour
         dd.enabled = true;
         ri.enabled = true;
         an.SetBool("IsIdle", false);
+        hasPlayedIdleSound = false;
     }
 
     public void StandStill(GameObject target)
     {
+        if (!hasPlayedIdleSound)
+        {
+            audio.Play();
+            hasPlayedIdleSound = true;
+        }
         mc.moveSpeed = 0;
         dd.enabled = false;
         ri.enabled = false;
