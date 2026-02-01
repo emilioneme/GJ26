@@ -5,7 +5,7 @@ public class SpotlightCollider : MonoBehaviour
     [SerializeField] float damageCooldown = 0.5f;
     [SerializeField] float minBlendingEfficacy = 0.6f;
     [SerializeField] float healMultiplier = 0.3f;
-    [SerializeField] float damageMultiplier = 3f;
+    [SerializeField] float damageMultiplier = 4f;
 
     BlendingHandler blendingHandler;
 
