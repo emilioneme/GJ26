@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7cdee4a94aab81448c94845766f749f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UserData
-  volume: 0.5
+  audioListener: {fileID: 0}
+  volume: 0.1
   sensitiviy: 0.5

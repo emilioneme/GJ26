@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
 
     public void SetVolume() 
     {
-        UserData.Instance.volume = volumeSlider.value;
+        UserData.Instance.SetVolume(volumeSlider.value);
     }
 
     public void SetSensitivity()

@@ -50,9 +50,9 @@ GameObject:
   - component: {fileID: 6307314004078529899}
   - component: {fileID: 7319175579224683032}
   - component: {fileID: 939684614000850329}
-  - component: {fileID: 8467497387459067749}
+  - component: {fileID: 4557650843360458395}
   m_Layer: 10
-  m_Name: Inmate
+  m_Name: FollowerInmate
   m_TagString: Inmate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,7 +253,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.258
+  m_Volume: 0.119
   m_Pitch: 0.97
   Loop: 0
   Mute: 0
@@ -360,14 +360,14 @@ MonoBehaviour:
   automaticDestroy: 0
   playOnStart: 1
   playOnEnable: 0
---- !u!114 &8467497387459067749
+--- !u!114 &4557650843360458395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8335197841678897772}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1cc2e01796368a4eb0a459bacf165e7, type: 3}
   m_Name: 
@@ -375,7 +375,19 @@ MonoBehaviour:
   target: {fileID: 0}
   onDesiredDirectionUpdated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5084484402078306335}
+        m_TargetAssemblyTypeName: InmateRotationInput, Assembly-CSharp
+        m_MethodName: UpdateDesiredRotation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8436229906902215984
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2245932963189022425
 Transform:
   m_ObjectHideFlags: 0
@@ -504,19 +516,7 @@ MonoBehaviour:
   self: {fileID: 8335197841678897772}
   averageDirection:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5084484402078306335}
-        m_TargetAssemblyTypeName: InmateRotationInput, Assembly-CSharp
-        m_MethodName: UpdateDesiredRotation
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   Inmates: []
 --- !u!1 &9002328647586111290
 GameObject:

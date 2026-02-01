@@ -9,11 +9,14 @@ public class PlayerInputHandler : MonoBehaviour
     InputAction LookAction;
     InputAction MoveAction;
     InputAction SprintAction;
+    InputAction InteractAction;
 
     [SerializeField] UnityEvent<Vector2> onMove;
 
     [SerializeField] UnityEvent<float> onVerticalLook;
     [SerializeField] UnityEvent<float> onHorizontalLook;
+
+    [SerializeField] UnityEvent OnInteract;
 
     [SerializeField] UnityEvent onSprintPressed;
 
@@ -27,6 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
         LookAction = playerInput.actions["Look"];
         MoveAction = playerInput.actions["Move"];
         SprintAction = playerInput.actions["Sprint"];
+        InteractAction = playerInput.actions["Interact"];
     }
 
     private void Update()
@@ -56,6 +60,9 @@ public class PlayerInputHandler : MonoBehaviour
         // SPRINT
         if (SprintAction.IsInProgress())
             onSprintPressed.Invoke();
+
+        if(InteractAction.WasPerformedThisFrame())
+            OnInteract.Invoke();
     }
 
     private void OnEnable()
@@ -63,6 +70,7 @@ public class PlayerInputHandler : MonoBehaviour
         LookAction.Enable();
         MoveAction.Enable();
         SprintAction.Enable();
+        InteractAction.Enable();
     }
 
     private void OnDisable()
@@ -70,6 +78,7 @@ public class PlayerInputHandler : MonoBehaviour
         LookAction.Disable();
         MoveAction.Disable();
         SprintAction.Disable();
+        InteractAction.Disable();
     }
 }
 
