@@ -5,7 +5,6 @@ public class SpotlightTarget : MonoBehaviour
 {
     [SerializeField]
     public GameObject center;
-    public GameObject gameManager;
 
     [SerializeField]
     public float speed = 10f;
