@@ -105,7 +105,9 @@ public class PlaverManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.SphereCast(pivot.transform.position, interactionRadius, pivot.transform.forward, out hit, interactionDistance))
         {
-            int layer = hit.collider.gameObject.layer; //string layerName = LayerMask.LayerToName(layer);
+            int layer = hit.collider.gameObject.layer; 
+            string layerName = LayerMask.LayerToName(layer);
+            Debug.Log(layerName);
             //((1 << layer) is a bit flag
 
             //Guards
@@ -137,6 +139,7 @@ public class PlaverManager : MonoBehaviour
                 if (!ladderUnlocked) 
                 {
                     SetDialogue(alarmInnerDialogues);
+                    Debug.Log("alarm inner dialogue");
                     if (playerInputHandler.InteractAction.WasCompletedThisFrame()) 
                     {
                         ladderUnlocked = true;
