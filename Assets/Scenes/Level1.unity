@@ -13065,67 +13065,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5556573993898251065, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: InteractAction.m_Name
-      value: Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 6403309118223377689, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: NPC
-      value: '"if only we could lure the guard away"'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: NPCHint
-      value: '"it must be usfull that ladder"'
       objectReference: {fileID: 0}
     - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: FadeImage
       value: 
       objectReference: {fileID: 868675728}
     - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: ladderText
-      value: the guard are gone, maybe now is the time
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: FadeImageGO
       value: 
       objectReference: {fileID: 868675726}
     - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: NPCAfterHint
-      value: '"go while you can"'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: alarmTextText
-      value: im going to turn off this fcking light
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: InteractionText
       value: 
       objectReference: {fileID: 1149275342}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: prisonGuardText
-      value: '"hawVDAWHDVAJHDW yawGHD ioAWD AWD am hgonnas getchuuuu wiwiiwiuwiuwwuwu
-        hnehbheheheee"'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: lockedLadderText
-      value: a way up
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: textCooldownFactor
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: alarmTiggeredTextText
-      value: fuck the guards will be on me
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: textCharacterCooldown
-      value: 0.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
