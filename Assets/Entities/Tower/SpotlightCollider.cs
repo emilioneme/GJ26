@@ -49,6 +49,7 @@ public class SpotlightCollider : MonoBehaviour
 
         if (Time.time - lastTimeDamaged > damageCooldown)
         {
+            
             //Debug.Log("BlendingEfficacy: " + blendingHandler.currentBlendingEfficacy);
             if(blendingHandler.currentBlendingEfficacy < minBlendingEfficacy)
             {
@@ -78,6 +79,7 @@ public class SpotlightCollider : MonoBehaviour
         {
             blendingHandler = bh;
             Debug.Log("Entered spotlight");
+            GameManager.Instance.PlayWatchedAudio();
         }
     }
 
@@ -87,6 +89,7 @@ public class SpotlightCollider : MonoBehaviour
         {
             blendingHandler = null;
             Debug.Log("Exited spotlight");
+            GameManager.Instance.StopWatchedAudio();
         }
     }
 }

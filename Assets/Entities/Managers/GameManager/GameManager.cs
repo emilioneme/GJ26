@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     SpotlightSpin sp;
 
+    AudioSource watchedAudio;
 
 
 
@@ -44,13 +45,29 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sp = spotlight.GetComponent<SpotlightSpin>();
+        watchedAudio = spotlight.transform.GetComponent<AudioSource>();
 
 
         
 
     }
 
+    public void PlayWatchedAudio()
+    {
+        if (!watchedAudio.isPlaying)
+        {
+            watchedAudio.Play();
+        }
+    }
 
+    public void StopWatchedAudio()
+    {
+        if (watchedAudio.isPlaying)
+        {
+            watchedAudio.Stop();
+        }
+    }
+    
     public void TakeDamage(float damage)
     {
         health -= damage;
