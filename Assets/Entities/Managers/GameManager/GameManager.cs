@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public float alertBarAmount = 0;
     public int alertLevel = 0;
 
+    public GameObject player;
+
+    public GameObject spotlight;
+
 
 
 
@@ -48,18 +52,22 @@ public class GameManager : MonoBehaviour
     {
         alertBarAmount += alertAmount;
 
-        if(alertBarAmount > 33 && alertLevel < 66)
+        if(alertBarAmount > 33 && alertLevel < 66 && alertLevel != 1)
         {
+            spotlight.GetComponent<SpotlightSpin>().playerTarget = false;
             alertLevel = 1;
             Debug.Log("alert level: " + alertLevel);
         }
-        if(alertBarAmount > 66)
+        if(alertBarAmount > 66 && alertLevel != 2)
         {
+            spotlight.GetComponent<SpotlightSpin>().playerTarget = true;
             alertLevel = 2;
             Debug.Log("alert level: " + alertLevel);
+
         }
         if(alertBarAmount < 33 && alertLevel > 0)
         {
+            spotlight.GetComponent<SpotlightSpin>().playerTarget = false;
             alertLevel = 0;
             Debug.Log("alert level: " + alertLevel);
         }
