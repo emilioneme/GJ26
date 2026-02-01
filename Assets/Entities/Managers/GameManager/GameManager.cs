@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public AudioSource Scaryaudio;
     public static GameManager Instance { get; set; }
     public  float health = 10f;
     public int numberOfBacthes = 20;
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         sp = spotlight.GetComponent<SpotlightSpin>();
         watchedAudio = spotlight.transform.GetComponent<AudioSource>();
-
+        
 
         
 
@@ -69,6 +70,12 @@ public class GameManager : MonoBehaviour
             watchedAudio.Stop();
         }
     }
+
+    public void PlayScary()
+    {
+        Scaryaudio.Play();
+    }
+
     
     public void TakeDamage(float damage)
     {
