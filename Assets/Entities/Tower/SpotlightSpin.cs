@@ -18,6 +18,17 @@ public class SpotlightSpin : MonoBehaviour
         pitchSeed = Random.value * 100f;
     }
 
+    public void SetPlayerTarget(bool setPlayerTarget)
+    {
+        if (setPlayerTarget)
+        {
+            spotlightTarget.GetComponent<SpotlightCollider>().setPlayerTarget(true);
+        } else
+        {
+            spotlightTarget.GetComponent<SpotlightCollider>().setPlayerTarget(false);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -32,7 +43,6 @@ public class SpotlightSpin : MonoBehaviour
         // }
         if (playerTarget)
         {
-            spotlightTarget.GetComponent<SpotlightCollider>().playerTarget = true;
 
             Vector3 playerDirection =
                 (transform.position - GameManager.Instance.player.transform.position).normalized;
@@ -59,8 +69,6 @@ public class SpotlightSpin : MonoBehaviour
 
             return;
         }
-
-        spotlightTarget.GetComponent<SpotlightCollider>().playerTarget = false;
 
         Vector3 direction = (transform.position - spotlightTarget.transform.position).normalized;
         Vector3 zeroedDir = new Vector3(direction.x, 0, direction.z);

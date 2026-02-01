@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,18 +56,18 @@ public class GameManager : MonoBehaviour
 
     public void RaiseAlert(float alertAmount)
     {
-        alertBarAmount += alertAmount;
+        alertBarAmount = Math.Clamp(alertBarAmount + alertAmount, 0, 100);
 
         if((alertBarAmount > 33 && alertBarAmount < 66 && alertLevel != 1) || level.Equals("Level2") && alertLevel != 1 && alertBarAmount < 66)
         {
-            spotlight.GetComponent<SpotlightSpin>().playerTarget = false;
+            spotlight.GetComponent<SpotlightSpin>().SetPlayerTarget(false);
             spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
             alertLevel = 1;
             Debug.Log("alert level: " + alertLevel);
         }
         if(alertBarAmount > 66 && alertLevel != 2)
         {
-            spotlight.GetComponent<SpotlightSpin>().playerTarget = true;
+            spotlight.GetComponent<SpotlightSpin>().SetPlayerTarget(true);
             spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = false;
             alertLevel = 2;
             Debug.Log("alert level: " + alertLevel);
@@ -74,7 +75,7 @@ public class GameManager : MonoBehaviour
         }
         if(alertBarAmount < 33 && alertLevel > 0 && !level.Equals("Level2"))
         {
-            spotlight.GetComponent<SpotlightSpin>().playerTarget = false;
+            spotlight.GetComponent<SpotlightSpin>().SetPlayerTarget(false);
             spotlight.GetComponent<SpotlightSpin>().spotlightTarget.GetComponent<SpotlightCollider>().enabled = true;
             alertLevel = 0;
             Debug.Log("alert level: " + alertLevel);
@@ -85,6 +86,8 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("MenuScene");
             Debug.Log("Player has died.");
         }
+
+        Debug.Log("alertBarAmount: " + alertBarAmount);
     }
 
 }
