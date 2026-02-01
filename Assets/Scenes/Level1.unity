@@ -14712,10 +14712,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2120887138843969521, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4654943494614378708, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.306458
@@ -14759,18 +14755,6 @@ PrefabInstance:
     - target: {fileID: 6403309118223377689, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: FadeImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: FadeImageGO
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8862268115686011284, guid: 7df69d5fb6bd0ee4a9335a5c32003a5f, type: 3}
-      propertyPath: InteractionText
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19075,8 +19059,6 @@ SceneRoots:
   - {fileID: 567762826}
   - {fileID: 847226607}
   - {fileID: 8502914449879793798}
-  - {fileID: 1398190373}
-  - {fileID: 469569884}
   - {fileID: 1773292188}
   - {fileID: 993013583}
   - {fileID: 540987207}

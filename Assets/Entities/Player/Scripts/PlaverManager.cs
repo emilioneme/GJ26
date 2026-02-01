@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,49 +26,48 @@ public class PlaverManager : MonoBehaviour
     [SerializeField] float maxEndingDist;
     [SerializeField] Color endingColor = Color.white;
 
-    [Header("Layers")]
+    [Header("interactiveness")]
     [SerializeField] float interactionDistance = 2f;
     [SerializeField] float interactionRadius = 0.5f;
 
-    [Header("Layers")]
-    
 
-    [SerializeField] LayerMask bridgeLayer;
-    [SerializeField] LayerMask helper2Layer;
-    [SerializeField] LayerMask valuableLayer;
-    [SerializeField] LayerMask rioterLayer;
-
-    [Header("Dialogue")]
+    [Category("Leveless Dialogue")]
     [SerializeField] LayerMask guardLayer;
     [SerializeField][TextArea] string[] guardDialogues;
     [SerializeField] LayerMask npcLayer;
     [SerializeField][TextArea] string[] npcDialogues;
 
-    [Header("Level1")]
+    [Category("Level1")]
     [SerializeField] LayerMask alarmLayer;
     [SerializeField][TextArea] string[] alarmTriggeredInnerDialogues;
     [SerializeField][TextArea] string[] alarmInnerDialogues;
 
     [SerializeField] LayerMask helper1Layer;
-    [SerializeField][TextArea] string[] npcLadderHintDialogues;
-    [SerializeField][TextArea] string[] npcLadderParanoidDialogues;
+    [SerializeField][TextArea] string[] Helper1HintDialogues;
+    [SerializeField][TextArea] string[] Helper1AlertDialogues;
 
     [SerializeField] LayerMask ladderLayer;
     [SerializeField][TextArea] string[] ladderLockedInnerDialogue;
     [SerializeField][TextArea] string[] ladderUnlockedInnerDialogue;
 
-    [Header("Level2")]
-    [SerializeField][TextArea] string[] rioterHintNPCDialogues; // tells u about this guy planning a riot and bridge
+    [Category("Level2")]
+    [SerializeField] LayerMask helper2Layer;
+    [SerializeField][TextArea] string[] helper2ValuableDialogue; // tells u about this guy planning a riot and bridge
+    [SerializeField][TextArea] string[] helper2RioterDialogue; // tells u about this guy planning a riot and bridge
 
-    [SerializeField][TextArea] string[] valueableFoundDialogue; //like a prison light manifesto manifesto
-    [SerializeField][TextArea] string[] valueableCollecterDialogue;
+    [SerializeField] LayerMask valuableLayer;
+    [SerializeField][TextArea] string[] valuableDialogue; //like a prison light manifesto manifesto
+    [SerializeField][TextArea] string[] valuableCollectedDialogue;
 
-    [SerializeField][TextArea] string[] rioterManifestoDialogue;
+    [SerializeField] LayerMask rioterLayer;
+    [SerializeField][TextArea] string[] rioterDialogue;
+    [SerializeField][TextArea] string[] rioterChantDialogue;
 
+    [SerializeField] LayerMask bridgeLayer;
     [SerializeField][TextArea] string[] bridgeLockedDialogues;
 
 
-    [Header("text effect")]
+    [Category("text effect")]
     [SerializeField] float textCharacterCooldown = .1f;
     [SerializeField] float textCharacterRemoveCooldown = .1f;
     [SerializeField] float textCooldownFactor = .3f;
@@ -76,6 +76,8 @@ public class PlaverManager : MonoBehaviour
 
     bool bridgeLocked = true;
     bool hasValuable = false;
+
+    string lastDialogue;
 
     Coroutine textAppearRoutine;
     Coroutine textDisappearRoutine;
@@ -124,9 +126,9 @@ public class PlaverManager : MonoBehaviour
             if (((1 << layer) & helper1Layer) != 0)
             {
                 if (!ladderUnlocked)
-                    SetDialogue(npcLadderHintDialogues);
+                    SetDialogue(Helper1HintDialogues);
                 else
-                    SetDialogue(npcLadderParanoidDialogues);
+                    SetDialogue(Helper1AlertDialogues);
             }
 
             // Alarm
@@ -137,7 +139,8 @@ public class PlaverManager : MonoBehaviour
                     SetDialogue(alarmInnerDialogues);
                     if (playerInputHandler.InteractAction.WasCompletedThisFrame()) 
                     {
-                        UnlockLadder();
+                        ladderUnlocked = true;
+                        ForceDialogue(alarmTriggeredInnerDialogues);
                         alarmTriggered.Invoke(transform.position);
                     }
                 }
@@ -160,23 +163,27 @@ public class PlaverManager : MonoBehaviour
                 }
             }
 
-            //Level 2 /////////////////////////
+            //Level 2 /////////////////////////////////////////////////////////////
+
+
             //Helper2
             if (((1 << layer) & helper2Layer) != 0)
             {
-                if (bridgeLocked)
-                    SetDialogue(rioterHintNPCDialogues);
-                
+                if (bridgeLocked && !hasValuable)
+                    SetDialogue(helper2ValuableDialogue);
+                else if (bridgeLocked)
+                    SetDialogue(helper2ValuableDialogue);
             }
 
             //Valuable
             if (((1 << layer) & valuableLayer) != 0)
             {
-                SetDialogue(valueableFoundDialogue);
+                SetDialogue(valuableDialogue);
 
                 if(playerInputHandler.InteractAction.WasCompletedThisFrame()) 
                 {
-                    CollectValuable(hit);
+                    Destroy(hit.transform.root);
+                    ForceDialogue(valuableCollectedDialogue);
                 }
             }
 
@@ -185,9 +192,15 @@ public class PlaverManager : MonoBehaviour
             {
                 if (hasValuable && bridgeLocked) 
                 {
+                    SetDialogue(rioterDialogue);
+
                     if (playerInputHandler.InteractAction.WasCompletedThisFrame()) 
                     {
-                        GiveValuable();
+                        bridgeLocked = true;
+                        brdigeBlocker.SetActive(false);
+                        FadeImage.color = Color.clear;
+                        riotStarted.Invoke(transform.position);
+                        ForceDialogue(rioterChantDialogue);
                     }
                 }
             }
@@ -216,27 +229,6 @@ public class PlaverManager : MonoBehaviour
         hasValuable = true;
     }
 
-    public void UnlockLadder()
-    {
-        ForceDialogue(alarmTriggeredInnerDialogues);
-        ladderUnlocked = true;
-    }
-
-    public void GiveValuable() 
-    {
-        bridgeLocked = true;
-        brdigeBlocker.SetActive(false);
-        FadeImage.color = Color.clear;
-        ForceDialogue(rioterManifestoDialogue);
-        riotStarted.Invoke(transform.position);
-    }
-
-    public void CollectValuable(RaycastHit hit) 
-    {
-        Destroy(hit.transform);
-        ForceDialogue(valueableCollecterDialogue);
-    }
-
     public void ClimbLadder() 
     {
         FadeImageGO.SetActive(true);
@@ -256,13 +248,21 @@ public class PlaverManager : MonoBehaviour
         if (textAppearRoutine != null)
             StopCoroutine(textAppearRoutine);
 
+        InteractionText.text = "";
+
+        lastDialogue = null; // or "" — just something that won't match
         SetDialogue(dialogues);
     }
 
     void SetDialogue(string[] dialogues)
     {
         int i = Random.Range(0, dialogues.Length);
-        string text = dialogues[0];
+        string text = dialogues[i];
+
+        if (lastDialogue == text)
+            return;
+        lastDialogue = text;
+
         if (textAppearRoutine == null)
         {
             textAppearRoutine = StartCoroutine(TextAppearCoroutine(text));

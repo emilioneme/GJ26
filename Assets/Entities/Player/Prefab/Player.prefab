@@ -736,67 +736,80 @@ MonoBehaviour:
   endingColor: {r: 1, g: 1, b: 1, a: 1}
   interactionDistance: 2
   interactionRadius: 0.5
-  ladderLayer:
-    serializedVersion: 2
-    m_Bits: 1048576
-  npcLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  alarmLayer:
-    serializedVersion: 2
-    m_Bits: 2097152
-  helper1Layer:
-    serializedVersion: 2
-    m_Bits: 8388608
   guardLayer:
     serializedVersion: 2
     m_Bits: 524288
-  bridgeLayer:
-    serializedVersion: 2
-    m_Bits: 67108864
-  helper2Layer:
-    serializedVersion: 2
-    m_Bits: 16777216
-  valuableLayer:
-    serializedVersion: 2
-    m_Bits: 268435456
-  rioterLayer:
-    serializedVersion: 2
-    m_Bits: 33554432
   guardDialogues:
   - Grrrrrrrrrrr
   - AWDJhbJHAWDB aKWDBA BWD<> aWDNm
   - YObdAWDuAWD AWAADWMOTHER AWFUkEHRT
+  npcLayer:
+    serializedVersion: 2
+    m_Bits: 4194304
   npcDialogues:
-  - ......
-  ladderLockedInnerDialogue:
-  - 'watching me watching me '
-  - up?
-  ladderUnlockedInnerDialogue:
-  - uuu uu u up
+  - blend in, blend in... blend in...
+  - turn off the light, turn off the ligh!
+  - my brain!!
+  - 'dont blow my cover! '
+  - act like sheeps
+  alarmLayer:
+    serializedVersion: 2
+    m_Bits: 2097152
   alarmTriggeredInnerDialogues:
-  - blend in, blend in... ble ee eend in
+  - fuck! i gotta blend in!
+  - im calling to much attention
   alarmInnerDialogues:
-  - turn the light off
-  - blend in blend in blend in
-  npcLadderHintDialogues:
-  - "there must be a reason for that ladder\t"
-  npcLadderParanoidDialogues:
-  - oh no, fuck! what have you done!
-  rioterHintNPCDialogues:
-  - there is another tryin to turn of the lights, but shhhhh. blend in... blend in..
-    blend in..
-  - theres is a rioter looking to turn off the lights
-  valueableFoundDialogue:
-  - maa aa aa nifesto?
-  valueableCollecterDialogue:
-  - 
-  rioterManifestoDialogue:
-  - time to turn of the lights! ARGHHHHHHHH ARGHHHHHHH!!
+  - turn off this ligh!
+  - another light! turn off the ligh!
+  helper1Layer:
+    serializedVersion: 2
+    m_Bits: 8388608
+  Helper1HintDialogues:
+  - there must be a way up
+  - maybe i can distract the guards while you go up
+  Helper1AlertDialogues:
+  - 'go go go! leave, before they get you! '
+  ladderLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
+  ladderLockedInnerDialogue:
+  - this ladder is too tall
+  - another level?
+  ladderUnlockedInnerDialogue:
+  - i might never get another opportunity
+  helper2Layer:
+    serializedVersion: 2
+    m_Bits: 16777216
+  helper2ValuableDialogue:
+  - prepare to riot
+  - get weapons and unite
+  - talk to our leader
+  - our leader is somehwere
+  helper2RioterDialogue: []
+  valuableLayer:
+    serializedVersion: 2
+    m_Bits: 268435456
+  valuableDialogue:
+  - should i take it? i might get caught
+  valuableCollectedDialogue:
+  - ill take it, might come in handy some day
+  rioterLayer:
+    serializedVersion: 2
+    m_Bits: 33554432
+  rioterDialogue:
+  - i already have a weapon, get one for yourself
+  - ITS TIME TO TUNR OFF THE LIGHTS
+  - you know what they do to people like us if, eventually...
+  rioterChantDialogue:
+  - RIASE YOU WEAPONS! IT IS TIME TO TURN OFF THE LIGHT!!
+  bridgeLayer:
+    serializedVersion: 2
+    m_Bits: 67108864
   bridgeLockedDialogues:
-  - the light, turn off THE LIGHT!
-  textCharacterCooldown: 0.05
-  textCooldownFactor: 0.01
+  - i cant go through or i will not blend in
+  textCharacterCooldown: 0.2
+  textCharacterRemoveCooldown: 0.1
+  textCooldownFactor: 0.2
 --- !u!1 &6789573465357602942
 GameObject:
   m_ObjectHideFlags: 0
