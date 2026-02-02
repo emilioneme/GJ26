@@ -21,6 +21,7 @@ public class PlaverManager : MonoBehaviour
     public UnityEvent<Vector3> alarmTriggered;
     public UnityEvent<Vector3> riotStarted;
     public UnityEvent climbingLadder; // for sounds
+    public UnityEvent gotWeapon;
     [Header("VIgnette")]
     [SerializeField] Color fromColor;
     [SerializeField] Color toColor;
@@ -83,7 +84,7 @@ public class PlaverManager : MonoBehaviour
     bool hasAccessToBrdige = false;
     bool hasValuable = false;
 
-    string lastDialogue;
+    string[] lastDialogues;
 
     Coroutine textAppearRoutine;
     Coroutine textDisappearRoutine;
@@ -127,13 +128,13 @@ public class PlaverManager : MonoBehaviour
             //Guards
             if (((1 << layer) & guardLayer) != 0)
             {
-                SetDialogue(guardDialogues);
+                ForceDialogue(guardDialogues);
             }
 
             //Guards
             if (((1 << layer) & npcLayer) != 0)
             {
-                SetDialogue(npcDialogues);
+                ForceDialogue(npcDialogues);
             }
 
             //Level 1 /////////////////////////
@@ -142,9 +143,9 @@ public class PlaverManager : MonoBehaviour
             if (((1 << layer) & helper1Layer) != 0)
             {
                 if (!ladderUnlocked)
-                    SetDialogue(Helper1HintDialogues);
+                    ForceDialogue(Helper1HintDialogues);
                 else
-                    SetDialogue(Helper1AlertDialogues);
+                    ForceDialogue(Helper1AlertDialogues);
             }
 
             // Alarm
@@ -152,10 +153,12 @@ public class PlaverManager : MonoBehaviour
             {
                 if (!ladderUnlocked) 
                 {
-                    SetDialogue(alarmInnerDialogues);
+                    ForceDialogue(alarmInnerDialogues);
                     Debug.Log("alarm inner dialogue");
                     if (playerInputHandler.InteractAction.WasPerformedThisFrame()) 
                     {
+                        GameObject go = hit.transform.gameObject;
+                        Destroy(go, .01f);
                         ladderUnlocked = true;
                         ForceDialogue(alarmTriggeredInnerDialogues);
                         alarmTriggered.Invoke(transform.position);
@@ -169,11 +172,11 @@ public class PlaverManager : MonoBehaviour
             {
                 if (!ladderUnlocked) 
                 {
-                    SetDialogue(ladderLockedInnerDialogue);
+                    ForceDialogue(ladderLockedInnerDialogue);
                 }
                 else 
                 {
-                    SetDialogue(ladderUnlockedInnerDialogue);
+                    ForceDialogue(ladderUnlockedInnerDialogue);
                     if (playerInputHandler.InteractAction.WasPerformedThisFrame())
                     {
                         ClimbLadder();
@@ -188,21 +191,21 @@ public class PlaverManager : MonoBehaviour
             if (((1 << layer) & helper2Layer) != 0)
             {
                 if (!hasAccessToBrdige && !hasValuable)
-                    SetDialogue(helper2ValuableDialogue);
+                    ForceDialogue(helper2ValuableDialogue);
                 else if (!hasAccessToBrdige)
-                    SetDialogue(helper2ValuableDialogue);
+                    ForceDialogue(helper2ValuableDialogue);
             }
 
             //Valuable
             if (((1 << layer) & valuableLayer) != 0)
             {
-                SetDialogue(valuableDialogue);
+                ForceDialogue(valuableDialogue);
 
                 if(playerInputHandler.InteractAction.WasPerformedThisFrame()) 
                 {
                     GameObject go = hit.transform.gameObject;
                     hasValuable = true;
-                    Destroy(go, .1f);
+                    Destroy(go, .01f);
                     ForceDialogue(valuableCollectedDialogue);
                 }
             }
@@ -213,7 +216,7 @@ public class PlaverManager : MonoBehaviour
                 if (!hasAccessToBrdige)
                 {
                     Debug.Log("cant start rtiot");
-                    SetDialogue(rioterDialogue);
+                    ForceDialogue(rioterDialogue);
                 }
 
                 if (hasValuable && !hasAccessToBrdige && playerInputHandler.InteractAction.WasCompletedThisFrame())
@@ -235,8 +238,7 @@ public class PlaverManager : MonoBehaviour
                 {
                     if (!hasAccessToBrdige)
                     {
-                        Debug.Log("cant start rtiot");
-                        SetDialogue(rioterDialogue);
+                        ForceDialogue(rioterDialogue);
                     }
                 }
                 
@@ -247,7 +249,7 @@ public class PlaverManager : MonoBehaviour
             {
                 if (!hasAccessToBrdige) 
                 {
-                    SetDialogue(bridgeLockedDialogues);
+                    ForceDialogue(bridgeLockedDialogues);
                 }
             }
         }
@@ -281,6 +283,12 @@ public class PlaverManager : MonoBehaviour
     #region Text Management
     void ForceDialogue(string[] dialogues)
     {
+        if (lastDialogues == dialogues)
+            return;
+
+        lastDialogues = dialogues;
+
+
         if (textDisappearRoutine != null)
             StopCoroutine(textDisappearRoutine);
         if (textAppearRoutine != null)
@@ -289,26 +297,6 @@ public class PlaverManager : MonoBehaviour
         int i = Random.Range(0, dialogues.Length);
         string text = dialogues[i];
         textAppearRoutine = StartCoroutine(TextAppearCoroutine(text));
-    }
-
-    void SetDialogue(string[] dialogues)
-    {
-        int i = Random.Range(0, dialogues.Length);
-        string text = dialogues[i];
-
-        if (lastDialogue == text)
-            return;
-        lastDialogue = text;
-
-        if (textAppearRoutine == null)
-        {
-            textAppearRoutine = StartCoroutine(TextAppearCoroutine(text));
-
-            if (textDisappearRoutine != null)
-            {
-                StopCoroutine(textDisappearRoutine);
-            }
-        }
     }
 
     IEnumerator TextAppearCoroutine(string text)
