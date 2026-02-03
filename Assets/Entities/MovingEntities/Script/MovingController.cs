@@ -39,7 +39,7 @@ public class MovingController : MonoBehaviour
         moveInput.z = input.y;
     }
 
-    Coroutine sprintCoroutine;
+    public Coroutine sprintCoroutine;
     public void UpdateSprint() 
     {
         if(sprintCoroutine != null)

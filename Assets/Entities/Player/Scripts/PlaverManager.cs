@@ -22,10 +22,13 @@ public class PlaverManager : MonoBehaviour
     public UnityEvent<Vector3> riotStarted;
     public UnityEvent climbingLadder; // for sounds
     public UnityEvent gotWeapon;
+
+    [SerializeField] BlendingHandler BlendingHandler;
+
     [Header("VIgnette")]
     [SerializeField] Color fromColor;
     [SerializeField] Color toColor;
-
+    [SerializeField] AnimationCurve blendingCurve;
 
 
     [Header("Tower Ending")]
@@ -39,6 +42,7 @@ public class PlaverManager : MonoBehaviour
 
 
     [Category("Leveless Dialogue")]
+    [SerializeField][TextArea] string[] introDialogues;
     [SerializeField] LayerMask guardLayer;
     [SerializeField][TextArea] string[] guardDialogues;
     [SerializeField] LayerMask npcLayer;
@@ -64,6 +68,7 @@ public class PlaverManager : MonoBehaviour
 
     [SerializeField] LayerMask valuableLayer;
     [SerializeField][TextArea] string[] valuableDialogue; //like a prison light manifesto manifesto
+    [SerializeField][TextArea] string[] hasValuableDialogue; //like a prison light manifesto manifesto
     [SerializeField][TextArea] string[] valuableCollectedDialogue;
 
     [SerializeField] LayerMask rioterLayer;
@@ -99,11 +104,13 @@ public class PlaverManager : MonoBehaviour
     private void Start()
     {
         FadeImageGO.SetActive(true);
+        FadeImage.color = Color.black;
         FadeImage.DOColor(Color.clear, 1f)
         .OnComplete(() =>
         {
             FadeImageGO.SetActive(false);
         });
+        ForceDialogue(introDialogues);
 
         VignneteImage.color = fromColor;
     }
@@ -111,10 +118,11 @@ public class PlaverManager : MonoBehaviour
 
     public void Update()
     {
-        float t = GameManager.Instance.alertBarAmount / 100;
+        float blendingEfficacy = Mathf.InverseLerp(1, -1, BlendingHandler.currentBlendingEfficacy);
+        float t = blendingCurve.Evaluate(blendingEfficacy);
         VignneteImage.color = Color.Lerp(fromColor, toColor, t);
-        float a = t * alphaFactor;
-        VignneteImage.color = new Color(VignneteImage.color.r, VignneteImage.color.g, VignneteImage.color.b, t);
+        //float a = t * alphaFactor;
+        //VignneteImage.color = new Color(VignneteImage.color.r, VignneteImage.color.g, VignneteImage.color.b, t);
 
 
         RaycastHit hit;
@@ -151,7 +159,7 @@ public class PlaverManager : MonoBehaviour
             // Alarm
             if (((1 << layer) & alarmLayer) != 0) 
             {
-                if (!ladderUnlocked) 
+                if (true) 
                 {
                     ForceDialogue(alarmInnerDialogues);
                     Debug.Log("alarm inner dialogue");
@@ -165,6 +173,7 @@ public class PlaverManager : MonoBehaviour
                         
                     }
                 }
+
             }
 
             //Ladder
@@ -199,14 +208,21 @@ public class PlaverManager : MonoBehaviour
             //Valuable
             if (((1 << layer) & valuableLayer) != 0)
             {
-                ForceDialogue(valuableDialogue);
-
-                if(playerInputHandler.InteractAction.WasPerformedThisFrame()) 
+                if (hasValuable)
                 {
-                    GameObject go = hit.transform.gameObject;
-                    hasValuable = true;
-                    Destroy(go, .01f);
-                    ForceDialogue(valuableCollectedDialogue);
+                    ForceDialogue(valuableDialogue);
+
+                    if(playerInputHandler.InteractAction.WasPerformedThisFrame()) 
+                    {
+                        GameObject go = hit.transform.gameObject;
+                        hasValuable = true;
+                        Destroy(go, .01f);
+                        ForceDialogue(valuableCollectedDialogue);
+                    }
+                }
+                else 
+                {
+                    ForceDialogue(hasValuableDialogue);
                 }
             }
 
@@ -215,7 +231,6 @@ public class PlaverManager : MonoBehaviour
             {
                 if (!hasAccessToBrdige)
                 {
-                    Debug.Log("cant start rtiot");
                     ForceDialogue(rioterDialogue);
                 }
 

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class DirectionCollider : MonoBehaviour
 {
     public GameObject self;
-    public UnityEvent<Vector2> averageDirection;
+    public UnityEvent<Vector2, bool> averageDirection; //bool of walking or notd
 
     public List<GameObject> Inmates = new List<GameObject>();
 
@@ -26,19 +26,35 @@ public class DirectionCollider : MonoBehaviour
 
         if (Inmates.Count == 0)
         {
-            averageDirection.Invoke(Vector2.zero);
+            averageDirection.Invoke(Vector2.zero, true);
             return;
         }
 
+        Dictionary<bool, int> numberOfWalkers = new Dictionary<bool, int>
+        {
+            { true, 0 },
+            { false, 0 }
+        };
         Vector2 cumulativeDirection = Vector2.zero;
         foreach (GameObject boid in Inmates)
         {
             Vector2 direction = new Vector2(boid.transform.forward.x, boid.transform.forward.z);
             cumulativeDirection += direction;
+
+            if (boid.TryGetComponent(out MovingController mc))
+            {
+                if (mc.moveInput.magnitude > .1f)
+                    numberOfWalkers[true] += 1;
+                else
+                    numberOfWalkers[false] += 1;
+            }
         }
 
+        bool walkingAverage = true;
+        if (numberOfWalkers[true] > numberOfWalkers[false])
+            walkingAverage = true;
         Vector2 avgDirection = cumulativeDirection / Inmates.Count;
-        averageDirection.Invoke(avgDirection.normalized);
+        averageDirection.Invoke(avgDirection.normalized, walkingAverage);
     }
 
     private void OnTriggerEnter(Collider other)

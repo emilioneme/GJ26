@@ -5785,6 +5785,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86c47a31da12ab4b9183c84526931c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  Scaryaudio: {fileID: 0}
+  health: 10
+  numberOfBacthes: 20
+  alertBarAmount: 0
+  alertLevel: 0
+  player: {fileID: 0}
+  spotlight: {fileID: 0}
+  level: 
+  BridgeBlocker: {fileID: 0}
+  EndingTransform: {fileID: 0}
+  highAlertAudio: {fileID: 0}
 --- !u!4 &1369258627
 Transform:
   m_ObjectHideFlags: 0
@@ -6407,6 +6418,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpotlightSpin
   spotlightTarget: {fileID: 1843999297}
+  spotlightOnRail: {fileID: 0}
+  playerTarget: 0
+  yawWobble: 0.3
+  pitchWobble: 0.3
+  wobbleSpeed: 0.5
 --- !u!1 &1783640034
 GameObject:
   m_ObjectHideFlags: 0
