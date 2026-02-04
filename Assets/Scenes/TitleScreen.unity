@@ -1133,7 +1133,7 @@ MonoBehaviour:
   FadeImageGO: {fileID: 1829691690}
   FadeImage: {fileID: 1829691691}
   InrtoText: {fileID: 2136805306}
-  introText: 'BLEND IN BLEND IN  BLEND IN BLEND IN BLEND IN BLEND IN '
+  introText: B     L     E     N     D           I      N
   outroText: you can try and turn off the light, but you will always be trapped
   textDuration: 0.075
   text2Duration: 0.05
@@ -4974,7 +4974,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 25.2
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

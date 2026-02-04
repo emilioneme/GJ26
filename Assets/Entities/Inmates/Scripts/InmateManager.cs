@@ -16,10 +16,4 @@ public class InmateManager : MonoBehaviour
     {
         movingController = GetComponent<MovingController>();
     }
-
-    private void Start()
-    {
-        inmateBatchID = Random.Range(0, GameManager.Instance.numberOfBacthes);
-    }
-
 }

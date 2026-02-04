@@ -39,29 +39,34 @@ public class MovingController : MonoBehaviour
         moveInput.z = input.y;
     }
 
+    
     public Coroutine sprintCoroutine;
     public void UpdateSprint() 
     {
-        if(sprintCoroutine != null)
+        if(sprintCoroutine != null) 
+        {
             StopCoroutine(sprintCoroutine);
+            sprintCoroutine = null;
+        }
 
         sprintCoroutine = StartCoroutine(SprintIncrease());
     }
 
     IEnumerator SprintIncrease() 
     {
-        while (sprintSpeed <= maxSprintSpeed)
+        while (sprintSpeed < maxSprintSpeed)
         {
-            Mathf.Clamp(sprintSpeed += sprintIncreaseSpeed * Time.deltaTime, 0, maxSprintSpeed);
+            sprintSpeed = Mathf.Clamp(sprintSpeed + sprintIncreaseSpeed * Time.deltaTime, 0f, maxSprintSpeed);
             yield return null;
         }
 
         while (sprintSpeed > 0)
         {
-            Mathf.Clamp(sprintSpeed -= sprintIncreaseSpeed * Time.deltaTime, 0, maxSprintSpeed);
+            sprintSpeed = Mathf.Clamp(sprintSpeed - sprintIncreaseSpeed * Time.deltaTime, 0f, maxSprintSpeed);
             yield return null;
         }
 
+        sprintSpeed = 0;
         sprintCoroutine = null;
     }
     

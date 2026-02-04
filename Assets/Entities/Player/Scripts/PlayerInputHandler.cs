@@ -50,7 +50,7 @@ public class PlayerInputHandler : MonoBehaviour
             onHorizontalLook.Invoke(0f);
 
         // MOVE
-        Vector2 move = MoveAction.ReadValue<Vector2>();
+        Vector2 move = MoveAction.ReadValue<Vector2>().normalized;
 
         if (move.sqrMagnitude > moveDeadzone * moveDeadzone)
             onMove.Invoke(move);

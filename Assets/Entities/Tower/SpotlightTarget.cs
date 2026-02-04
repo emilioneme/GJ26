@@ -6,12 +6,14 @@ public class SpotlightTarget : MonoBehaviour
     [SerializeField]
     public GameObject center;
 
-    [SerializeField]
-    public float speed = 10f;
+    [SerializeField] public float baseSpeed = 30;
+    [SerializeField] public float speedMultiplier = 5;
+
+    float speed = 10f;
 
     void Update()
     {
-        speed = GameManager.Instance.alertLevel * 5 + 15;
+        speed = GameManager.Instance.alertLevel + (speedMultiplier + baseSpeed);
         transform.RotateAround(center.transform.position, Vector3.up, speed * Time.deltaTime);
     }
 }

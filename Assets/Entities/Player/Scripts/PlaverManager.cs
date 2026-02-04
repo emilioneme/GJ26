@@ -130,7 +130,6 @@ public class PlaverManager : MonoBehaviour
         {
             int layer = hit.collider.gameObject.layer; 
             string layerName = LayerMask.LayerToName(layer);
-            Debug.Log(layerName);
             //((1 << layer) is a bit flag
 
             //Guards
