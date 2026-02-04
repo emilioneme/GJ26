@@ -10,12 +10,17 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; set; }
 
     public GameObject player;
+    public BlendingHandler playerBlend;
 
     public GameObject spotlight;
 
     public string level;
 
     [SerializeField] SpotlightSpin sp;
+
+    [SerializeField] float lowerAlertBy = 1;
+    [SerializeField] float lowerAlertCooldown = 1;
+    float lastTimeLowered = 0;
 
     //level design
     public GameObject BridgeBlocker;
@@ -52,6 +57,22 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sp = spotlight.GetComponent<SpotlightSpin>();
+        playerBlend = player.GetComponent<BlendingHandler>();
+    }
+
+    private void Update()
+    {
+        LowerAlertLevel();
+    }
+
+
+    public void LowerAlertLevel() 
+    {
+        if(Time.time - lastTimeLowered < lowerAlertCooldown) 
+        {
+            lastTimeLowered = Time.time;
+            UpdateAlertLevel(-lowerAlertBy);
+        }
     }
 
     public void HighAlert()
@@ -60,6 +81,7 @@ public class GameManager : MonoBehaviour
         {
             UserData.Instance.alertBarAmount = 75;
         }
+        RaiseAlert(0);
     }
 
     public void MaxDifficulty() 
@@ -67,12 +89,17 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlaverManager>().LostGame();
     }
 
-    public void RaiseAlert(float alertAmount)
+    public void RaiseAlert(float increaseAMount)
     {
         RaisedALert.Invoke();
+        UpdateAlertLevel(increaseAMount);
+    }
+
+    void UpdateAlertLevel(float alertAmount) 
+    {
         UserData.Instance.alertBarAmount = Math.Clamp(UserData.Instance.alertBarAmount + alertAmount, 0, 100);
 
-        if(UserData.Instance.alertBarAmount < 33 && UserData.Instance.alertLevel > 0 && !level.Equals("Level2"))
+        if (UserData.Instance.alertBarAmount < 33 && UserData.Instance.alertLevel > 0 && !level.Equals("Level2"))
         {
             sp.playerTarget = false;
             //spc.enabled = true;

@@ -225,16 +225,16 @@ public class PlaverManager : MonoBehaviour
             //Valuable
             if (((1 << layer) & valuableLayer) != 0)
             {
-                if (hasValuable)
+                if (!hasValuable)
                 {
                     ForceDialogue(valuableDialogue);
 
-                    if(playerInputHandler.InteractAction.WasPerformedThisFrame()) 
+                    if(playerInputHandler.InteractAction.WasCompletedThisFrame()) 
                     {
                         GameObject go = hit.transform.gameObject;
                         hasValuable = true;
-                        Destroy(go, .01f);
                         ForceDialogue(valuableCollectedDialogue);
+                        Destroy(go, .01f);
                     }
                 }
                 else 
