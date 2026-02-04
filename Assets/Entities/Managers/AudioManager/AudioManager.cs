@@ -14,13 +14,17 @@ public class AudioManager : MonoBehaviour
             Instance = this;
         }
     }
+    [SerializeField] GameObject brokenSound;
 
     [SerializeField] GameObject raiseAlertSound;
 
     public void RaiseAlertSound() 
     {
-        Destroy(Instantiate(raiseAlertSound), 5);
+        Destroy(Instantiate(raiseAlertSound, Vector3.zero, Quaternion.identity), 5);
     }
 
-    
+    public void BrokenSound(Vector3 pos)
+    {
+        Destroy(Instantiate(brokenSound, pos, Quaternion.identity), 5);
+    }
 }

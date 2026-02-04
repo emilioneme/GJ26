@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 4874159869601889035}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000007450579, y: -0, z: 0.000000007450579, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 15}
+  m_LocalPosition: {x: 0, y: 1.21, z: -0.4}
+  m_LocalScale: {x: 50, y: 50, z: 39.879}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8339865752753527835}
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a4892c16a883ef4787b8677e39867ae, type: 2}
+  - {fileID: 2100000, guid: 50a5cb3b7b0d4bc449396994cd9c29bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,10 +135,10 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 63.5
-  m_Range: 2.21961
-  m_SpotAngle: 35.04146
-  m_InnerSpotAngle: 3.9960394
+  m_Intensity: 177.57
+  m_Range: 23.3
+  m_SpotAngle: 67.03662
+  m_InnerSpotAngle: 35.99121
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -166,7 +166,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: 0baadecbe260ef748a81f6ff0c7e159b, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -331,7 +331,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5.16, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &5322478028961371185
 AudioSource:

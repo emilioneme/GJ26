@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public AudioSource highAlertAudio;
 
+    public UnityEvent RaisedALert;
+
 
     private void Awake()
     {
@@ -41,9 +44,8 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        RaiseAlert(0);
+        //RaiseAlert(0);
     }
-
 
     private void Start()
     {
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void RaiseAlert(float alertAmount)
     {
+        RaisedALert.Invoke();
         UserData.Instance.alertBarAmount = Math.Clamp(UserData.Instance.alertBarAmount + alertAmount, 0, 100);
 
         if(UserData.Instance.alertBarAmount < 33 && UserData.Instance.alertLevel > 0 && !level.Equals("Level2"))

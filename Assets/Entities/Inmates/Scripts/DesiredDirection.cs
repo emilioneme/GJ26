@@ -47,4 +47,9 @@ public class DesiredDirection : MonoBehaviour
         onDesiredDirectionUpdated.Invoke(desiredDirection);
     }
 
+    public void SetNewTarget(Transform newTarget) 
+    {
+        target = newTarget;
+    }
+
 }

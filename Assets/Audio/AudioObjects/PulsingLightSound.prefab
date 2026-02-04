@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5434196399398183410}
   - component: {fileID: 2654250053015031141}
   m_Layer: 0
-  m_Name: RaiseAlertSound
+  m_Name: PulsingLightSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 0.52
+  m_Volume: 0.676
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -120,7 +120,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -142,10 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb1416d1e0651e94887500728d4c6bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioObjectPlayer
-  pitchRandomizerOffset: 0.1
+  pitchRandomizerOffset: 0.2
   AudioClips:
-  - {fileID: 8300000, guid: 34b11dbd8a4743c4794ae635b027fb46, type: 3}
+  - {fileID: 8300000, guid: a203e4e14ce1a4e4386711e822fce564, type: 3}
   loop: 0
-  automaticDestroy: 1
+  automaticDestroy: 0
   playOnStart: 1
   playOnEnable: 0

@@ -95,14 +95,23 @@ public class PlaverManager : MonoBehaviour
     Coroutine textDisappearRoutine;
 
     PlayerInputHandler playerInputHandler;
+    [SerializeField] TMP_Text DebugText;
+
+    bool developerMode = false;
 
     private void Awake()
     {
         playerInputHandler = GetComponent<PlayerInputHandler>();
+#if UNITY_EDITOR
+        developerMode = true;
+#endif
     }
 
     private void Start()
     {
+        if (developerMode) DebugText.enabled = true;
+        else DebugText.enabled = false;
+
         FadeImageGO.SetActive(true);
         FadeImage.color = Color.black;
         FadeImage.DOColor(Color.clear, 1f)
@@ -118,6 +127,15 @@ public class PlaverManager : MonoBehaviour
 
     public void Update()
     {
+        DebugText.text = "Blednign Efficacy: " + BlendingHandler.currentBlendingEfficacy + "\n"
+            + "\n" + "alignment: " + BlendingHandler.alignmentEfficacy
+            + "\n" + "sprinting: " + BlendingHandler.currentSprintPunhisment
+            //+ "\n" + "macth walking: " + BlendingHandler.currentMatchingWalkPunishment
+            + "\n" + "inmate count: " + BlendingHandler.currentInmateCuuntReward
+            + "\n" + "wacther: " + BlendingHandler.currentWactherPunhisment
+            + "\n" + "\n" + "Alert Level: " + UserData.Instance.alertLevel
+            + "\n" + "Alert Bar: " + UserData.Instance.alertBarAmount;
+
         float blendingEfficacy = Mathf.InverseLerp(1, -1, BlendingHandler.currentBlendingEfficacy);
         float t = blendingCurve.Evaluate(blendingEfficacy);
         VignneteImage.color = Color.Lerp(fromColor, toColor, t);

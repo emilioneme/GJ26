@@ -21,16 +21,24 @@ public class BlendingHandler : MonoBehaviour
     public float minSpeed = 1;
     public float maxSpeed = 1;
 
+    [Header("current rewarsds and Punishmentsd")]
+    public float alignmentEfficacy = 0;
+    public float currentInmateCuuntReward = 0;
+    public float currentSprintPunhisment = 0;
+    public float currentWactherPunhisment = 0;
+    public float currentMatchingWalkPunishment = 0;
+
     [Header("punsihments and rewards")]
     [SerializeField][Range(-1, 0)] float sprintingPunishment = -.3f;
-    [SerializeField][Range(-1, 0)] float notMatchingWalkPunshismet = -.5f;
+    [SerializeField][Range(-1, 0)] float sprintingWatchedPunishment = -.3f;
+    //[SerializeField][Range(-1, 0)] float notMatchingWalkPunshismet = -.5f;
     [SerializeField][Range(0, 1)] float maxInmateCountReward = .5f;
     [SerializeField][Range(0, 1)] float noWacthersReward = .5f;
     [SerializeField][Range(-1, 0)] float watchersPunishmentFactor = -.5f;
 
     [SerializeField] int maxInmatesForCount = 20;
     [SerializeField] AnimationCurve inmatedCountRwardCurve;
-    float totalPunishment = 0;
+    public float totalPunishment = 0;
 
     bool watched;
 
@@ -74,12 +82,12 @@ public class BlendingHandler : MonoBehaviour
         if (standingTarget != null)
         {
             StandingGroup();
+            //WalkingPunishment(false);
         } 
         else //not in standing group
         {
             DirectionEfficacy(avgDirection);
-
-            WalkingPunishment(walking);
+            //WalkingPunishment(walking);
         }
 
         WactherSystem();
@@ -87,50 +95,52 @@ public class BlendingHandler : MonoBehaviour
         previousBlendingEfficacy = Mathf.Clamp(previousBlendingEfficacy + totalPunishment, -1, 1);
     }
 
-
-    public void DirectionEfficacy(Vector2 avgDirection) 
-    {
-        if (avgDirection.sqrMagnitude < 0.0001f)
-        {
-            previousBlendingEfficacy = -1;
-            return;
-        }
-        Vector2 currentDirection = new Vector2(transform.forward.x, transform.forward.z);
-        float dot = Vector2.Dot(currentDirection.normalized, avgDirection.normalized);
-        previousBlendingEfficacy = dot;
-    }
-
     void SprintingPunishment() 
     {
-        if (controller.sprintCoroutine != null)
-            totalPunishment += sprintingPunishment;
+        if (controller.sprintCoroutine != null && watched)
+            currentSprintPunhisment = sprintingWatchedPunishment;
+        else if (controller.sprintCoroutine != null)
+            currentSprintPunhisment = sprintingPunishment;
+        else
+            currentSprintPunhisment = 0;
+
+        totalPunishment += sprintingPunishment;
     }
 
+    /*
     void WalkingPunishment(bool walking)
     {
         if ((controller.moveInput.magnitude > 0.4f) != walking)
-            totalPunishment += notMatchingWalkPunshismet;
-    }
+            currentMatchingWalkPunishment = notMatchingWalkPunshismet;
+        else
+            currentMatchingWalkPunishment = 0;
+
+        totalPunishment += currentMatchingWalkPunishment;
+    }*/
 
     void InmateCountReward(int inmateCount) 
     {
         float nomralizedCount = Mathf.Clamp01(inmateCount / maxInmatesForCount);
         float curvedReward = inmatedCountRwardCurve.Evaluate(nomralizedCount);
-        totalPunishment += maxInmateCountReward;
+        currentInmateCuuntReward = curvedReward * maxInmateCountReward;
+
+        totalPunishment += currentInmateCuuntReward;
     }
 
     void WactherSystem() 
     {
         if (MaxWatchingStrenght() == 0) 
         {
-            totalPunishment += noWacthersReward;
-            watchedSound.SetActive(false);
+            currentWactherPunhisment = noWacthersReward;
+            watchedSound.SetActive(false); //AND DESTEROY
         }
         else 
         {
-            watchedSound.SetActive(true);
-            totalPunishment += MaxWatchingStrenght() * watchersPunishmentFactor;
+            watchedSound.SetActive(true); // COULD INSTANTIATE 
+            currentWactherPunhisment = MaxWatchingStrenght() * watchersPunishmentFactor;
         }
+
+        totalPunishment += currentWactherPunhisment;
 
     }
 
@@ -152,6 +162,20 @@ public class BlendingHandler : MonoBehaviour
         return max;
     }
 
+    #region Moving
+    public void DirectionEfficacy(Vector2 avgDirection)
+    {
+        if (avgDirection.sqrMagnitude < 0.0001f)
+        {
+            previousBlendingEfficacy = -1;
+            return;
+        }
+        Vector2 currentDirection = new Vector2(transform.forward.x, transform.forward.z);
+        float dot = Vector2.Dot(currentDirection.normalized, avgDirection.normalized);
+        alignmentEfficacy = dot;
+        previousBlendingEfficacy = alignmentEfficacy;
+    }
+    #endregion
 
     #region STandng Group
     void StandingGroup() 
@@ -164,7 +188,8 @@ public class BlendingHandler : MonoBehaviour
         ).normalized;
 
         float dot = Vector2.Dot(forward2D, toTarget2D);
-        previousBlendingEfficacy = dot;
+        alignmentEfficacy = dot;
+        previousBlendingEfficacy = currentBlendingEfficacy;
     }
     #endregion
 

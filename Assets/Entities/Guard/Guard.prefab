@@ -2326,8 +2326,6 @@ GameObject:
   - component: {fileID: 6495187542105842478}
   - component: {fileID: 2252390554570137900}
   - component: {fileID: 5956450165038636341}
-  - component: {fileID: 6806740535281958103}
-  - component: {fileID: 2157800480530887396}
   - component: {fileID: 3431014012611867952}
   - component: {fileID: 1622464863453199189}
   m_Layer: 19
@@ -2518,122 +2516,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InmateManager
   movingController: {fileID: 0}
   inmateBatchID: 0
---- !u!82 &6806740535281958103
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6946208567082938651}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 02ada32cc4f52824c82929900f8762d4, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.119
-  m_Pitch: 0.97
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 78
-  DopplerLevel: 5
-  MinDistance: 2.8571231
-  MaxDistance: 10
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &2157800480530887396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6946208567082938651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb1416d1e0651e94887500728d4c6bf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioObjectPlayer
-  pitchRandomizerOffset: 0
-  AudioClips:
-  - {fileID: 8300000, guid: 02ada32cc4f52824c82929900f8762d4, type: 3}
-  loop: 0
-  automaticDestroy: 0
-  playOnStart: 0
-  playOnEnable: 0
 --- !u!114 &3431014012611867952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2691,6 +2573,7 @@ MonoBehaviour:
     m_Bits: 131072
   sphereCastRadius: 3
   an: {fileID: 6607851715085877969}
+  guardSound: {fileID: 6137913108785001195, guid: c84dfb6dceb375c408370483f649c347, type: 3}
 --- !u!1 &7061229528235360486
 GameObject:
   m_ObjectHideFlags: 0

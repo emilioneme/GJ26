@@ -46,18 +46,18 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.011
-  m_Pitch: 2.36
+  m_Volume: 0.607
+  m_Pitch: 0.98
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 246
-  DopplerLevel: 1
-  MinDistance: 24.88
-  MaxDistance: 500
+  Priority: 211
+  DopplerLevel: 5
+  MinDistance: 0.15
+  MaxDistance: 4.32
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -65,23 +65,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.07692308
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.0833334
+      outSlope: -1.0833334
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -90,7 +90,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.981
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -105,7 +105,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -144,10 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioObjectPlayer
   pitchRandomizerOffset: 0.3
   AudioClips:
-  - {fileID: 8300000, guid: cba3a5f0902f4c849ba993dd52827a2b, type: 3}
-  - {fileID: 8300000, guid: 5d4915295d6beeb4eb8093d5208a2ee0, type: 3}
-  - {fileID: 8300000, guid: 9ea7c09893dcc674cbb1cd2a4368524a, type: 3}
-  - {fileID: 8300000, guid: 91647e7e5e8c71b4cb5b1f24d9ea465a, type: 3}
+  - {fileID: 8300000, guid: c2a32b748e875a549b4c9b8c61f2ca82, type: 3}
   loop: 1
   automaticDestroy: 0
   playOnStart: 1
