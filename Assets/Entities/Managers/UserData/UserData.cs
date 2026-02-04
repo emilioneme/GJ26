@@ -21,6 +21,9 @@ public class UserData : MonoBehaviour
 
     [SerializeField] public float sensitiviy = 0;
 
+    [SerializeField] public float alertLevel = 0;
+    [SerializeField] public float alertBarAmount = 0;
+
     void Start()
     {
         SetVolume(volume);
@@ -44,6 +47,12 @@ public class UserData : MonoBehaviour
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
+        if(scene.name == "TitleScreen") 
+        {
+            alertBarAmount = 0;
+            alertLevel = 0;
+        }
+
         SetVolume(volume);
     }
 }

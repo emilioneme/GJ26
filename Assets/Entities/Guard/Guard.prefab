@@ -2685,7 +2685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GuardWatchingBehaviour
   damageCooldown: 0.5
   minBlendingEfficacy: 0.6
-  damageMultiplier: 3
+  damageMultiplier: 20
   layerMask:
     serializedVersion: 2
     m_Bits: 131072

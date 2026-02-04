@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
 
     public void RaiseAlertSound() 
     {
-        Destroy(Instantiate(raiseAlertSound), 1);
+        Destroy(Instantiate(raiseAlertSound), 5);
     }
 
     

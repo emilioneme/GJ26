@@ -13,7 +13,7 @@ public class SpotlightTarget : MonoBehaviour
 
     void Update()
     {
-        speed = GameManager.Instance.alertLevel + (speedMultiplier + baseSpeed);
+        speed = UserData.Instance.alertLevel + (speedMultiplier + baseSpeed);
         transform.RotateAround(center.transform.position, Vector3.up, speed * Time.deltaTime);
     }
 }

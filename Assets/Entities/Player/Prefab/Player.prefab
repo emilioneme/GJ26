@@ -1009,18 +1009,18 @@ MonoBehaviour:
   previousBlendingEfficacy: 0
   normalizedBlend: 1
   minBlendEfficacyForAlert: -0.9
-  alertRaiseAmount: 3
+  alertRaiseAmount: 25
   alertCooldown: 3
   lastAlert: 15
   blendingSpeed: 0.5
   minSpeed: 0.1
   maxSpeed: 1
-  sprintingPunishment: -0.3
-  notMatchingWalkPunshismet: -0.2
+  sprintingPunishment: -0.5
+  notMatchingWalkPunshismet: -0.4
   maxInmateCountReward: 0.2
-  noWacthersReward: 0
+  noWacthersReward: 0.1
   watchersPunishmentFactor: -0.5
-  maxInmatesForCount: 20
+  maxInmatesForCount: 50
   inmatedCountRwardCurve:
     serializedVersion: 2
     m_Curve:

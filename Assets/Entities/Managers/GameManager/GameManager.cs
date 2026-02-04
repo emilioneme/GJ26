@@ -8,16 +8,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] public AudioSource Scaryaudio;
     public static GameManager Instance { get; set; }
 
-    public float alertBarAmount = 0;
-    public int alertLevel = 0;
-
     public GameObject player;
 
     public GameObject spotlight;
 
     public string level;
 
-    SpotlightSpin sp;
+    [SerializeField] SpotlightSpin sp;
 
     //level design
     public GameObject BridgeBlocker;
@@ -40,6 +37,11 @@ public class GameManager : MonoBehaviour
         level = SceneManager.GetActiveScene().name;
         Debug.Log(level);
         Debug.Log(level.Equals("Level2"));
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        RaiseAlert(0);
     }
 
 
@@ -52,58 +54,58 @@ public class GameManager : MonoBehaviour
 
     public void HighAlert()
     {
-        if(alertBarAmount < 75)
+        if(UserData.Instance.alertBarAmount < 75)
         {
-            alertBarAmount = 75;
+            UserData.Instance.alertBarAmount = 75;
         }
     }
 
     public void MaxDifficulty() 
     {
-
+        player.GetComponent<PlaverManager>().LostGame();
     }
 
     public void RaiseAlert(float alertAmount)
     {
-        alertBarAmount = Math.Clamp(alertBarAmount + alertAmount, 0, 100);
+        UserData.Instance.alertBarAmount = Math.Clamp(UserData.Instance.alertBarAmount + alertAmount, 0, 100);
 
-        if(alertBarAmount < 33 && alertLevel > 0 && !level.Equals("Level2"))
+        if(UserData.Instance.alertBarAmount < 33 && UserData.Instance.alertLevel > 0 && !level.Equals("Level2"))
         {
             sp.playerTarget = false;
             //spc.enabled = true;
-            alertLevel = 0;
-            Debug.Log("alert level: " + alertLevel);
+            UserData.Instance.alertLevel = 0;
+            Debug.Log("alert level: " + UserData.Instance.alertLevel);
         }
 
 
-        if ((alertBarAmount > 33 && alertBarAmount < 66 && alertLevel != 1) || level.Equals("Level2") && alertLevel != 1 && alertBarAmount < 66)
+        if ((UserData.Instance.alertBarAmount > 33 && UserData.Instance.alertBarAmount < 66 && UserData.Instance.alertLevel != 1) || level.Equals("Level2") && UserData.Instance.alertLevel != 1 && UserData.Instance.alertBarAmount < 66)
         {
             sp.playerTarget = false;
             //spc.enabled = true;
-            alertLevel = 1;
-            Debug.Log("alert level: " + alertLevel);
+            UserData.Instance.alertLevel = 1;
+            Debug.Log("alert level: " + UserData.Instance.alertLevel);
         }
 
-        if (alertBarAmount > 66 && alertLevel != 2)
+        if (UserData.Instance.alertBarAmount > 66 && UserData.Instance.alertLevel != 2)
         {
             sp.playerTarget = true;
             //spc.enabled = false;
-            alertLevel = 2;
-            Debug.Log("alert level: " + alertLevel);
+            UserData.Instance.alertLevel = 2;
+            Debug.Log("alert level: " + UserData.Instance.alertLevel);
 
         }
 
-        if (alertBarAmount >= 100)
+        if (UserData.Instance.alertBarAmount >= 100)
         {
             sp.playerTarget = true;
             //spc.enabled = true;
-            alertLevel = 3;
+            UserData.Instance.alertLevel = 3;
             Debug.Log("Player Has reached max difficulty");
             MaxDifficulty();
         }
 
 
-        Debug.Log("alertBarAmount: " + alertBarAmount);
+        Debug.Log("UserData.Instance.alertBarAmount: " + UserData.Instance.alertBarAmount);
     }
 
 }

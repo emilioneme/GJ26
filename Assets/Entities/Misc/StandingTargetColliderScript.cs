@@ -18,7 +18,6 @@ public class StandingTargetColliderScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player detected");
             BlendingHandler bh = other.gameObject.GetComponent<BlendingHandler>();
             bh.standingTarget = this.gameObject;
         }
@@ -27,7 +26,6 @@ public class StandingTargetColliderScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("player detected leaving");
             BlendingHandler bh = other.gameObject.GetComponent<BlendingHandler>();
             bh.standingTarget = null;
         }

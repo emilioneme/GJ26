@@ -42,7 +42,6 @@ public class GuardWatchingBehaviour : MonoBehaviour
         {
             if (hit.TryGetComponent(out BlendingHandler bh))
             {
-                Debug.Log("Spherecast hit");
                 blendingHandler = bh;
                 StandStill(hit.gameObject);
                 return;
@@ -97,8 +96,8 @@ public class GuardWatchingBehaviour : MonoBehaviour
             if(blendingHandler.currentBlendingEfficacy < minBlendingEfficacy)
             {
                 float damage = Mathf.InverseLerp(1 - minBlendingEfficacy, -1, blendingHandler.currentBlendingEfficacy) * damageMultiplier;
-                GameManager.Instance.RaiseAlert(damage);
-                Debug.Log(damage);
+                //GameManager.Instance.RaiseAlert(damage);
+                //Debug.Log(damage);
                 lastTimeDamaged = Time.time;
             }
         }

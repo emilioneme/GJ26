@@ -294,6 +294,17 @@ public class PlaverManager : MonoBehaviour
         });
     }
 
+    public void LostGame() 
+    {
+        FadeImageGO.SetActive(true);
+        FadeImage.color = Color.clear;
+        FadeImage.DOColor(Color.red, 1f)
+        .OnComplete(() =>
+        {
+            LoadScene("TitleScreen");
+        });
+    }
+
     #region Text Management
     void ForceDialogue(string[] dialogues)
     {
