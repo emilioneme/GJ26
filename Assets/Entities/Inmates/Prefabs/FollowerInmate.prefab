@@ -382,6 +382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Footstps sounds
       objectReference: {fileID: 0}
+    - target: {fileID: 1531816967357436482, guid: 67a171bacec123f4e890e3a41df88c86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4177372274086345524, guid: 67a171bacec123f4e890e3a41df88c86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -5,6 +5,8 @@ public class SpotlightSpin : MonoBehaviour
     [SerializeField]
     public GameObject spotlightTarget;
     public GameObject spotlightOnRail;
+    [SerializeField]
+    public Transform playerTargetGO;
     public bool playerTarget = false;
     [SerializeField] float yawWobble = 0.3f;    // horizontal amount
     [SerializeField] float pitchWobble = 0.3f;  // vertical amount
@@ -24,7 +26,7 @@ public class SpotlightSpin : MonoBehaviour
         if (playerTarget)
         {
             Vector3 playerDirection =
-                (transform.position - GameManager.Instance.player.transform.position).normalized;
+                (transform.position - playerTargetGO.position).normalized;
 
             // smooth offsets (replace Random.Range)
             float yawOffset =

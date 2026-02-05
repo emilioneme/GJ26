@@ -62,13 +62,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        LowerAlertLevel();
+        //LowerAlertLevel();
     }
 
 
     public void LowerAlertLevel() 
     {
-        if(Time.time - lastTimeLowered < lowerAlertCooldown) 
+        if(Time.time - lastTimeLowered > lowerAlertCooldown) 
         {
             lastTimeLowered = Time.time;
             UpdateAlertLevel(-lowerAlertBy);
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        Debug.Log("UserData.Instance.alertBarAmount: " + UserData.Instance.alertBarAmount);
+        //Debug.Log("UserData.Instance.alertBarAmount: " + UserData.Instance.alertBarAmount);
     }
 
 }

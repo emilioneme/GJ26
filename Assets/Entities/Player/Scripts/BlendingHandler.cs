@@ -58,6 +58,10 @@ public class BlendingHandler : MonoBehaviour
 
     private void Update()
     {
+        if(currentBlendingEfficacy > 0) 
+        {
+            GameManager.Instance.LowerAlertLevel();
+        }
         SmoothenBlending();
         normalizedBlend = (currentBlendingEfficacy + 1) / 2;
         blendingSound.pitch = startingPitch + Mathf.InverseLerp(1, 0, normalizedBlend);
@@ -120,9 +124,9 @@ public class BlendingHandler : MonoBehaviour
 
     void InmateCountReward(int inmateCount) 
     {
-        float nomralizedCount = Mathf.Clamp01(inmateCount / maxInmatesForCount);
-        float curvedReward = inmatedCountRwardCurve.Evaluate(nomralizedCount);
-        currentInmateCuuntReward = curvedReward * maxInmateCountReward;
+        float count = inmateCount;
+        float nomralizedCount = Mathf.Clamp01(count / maxInmatesForCount);
+        currentInmateCuuntReward = nomralizedCount * maxInmateCountReward;
 
         totalPunishment += currentInmateCuuntReward;
     }

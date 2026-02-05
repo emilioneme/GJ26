@@ -2324,7 +2324,6 @@ GameObject:
   - component: {fileID: 6645777356307281167}
   - component: {fileID: 1464772703323632505}
   - component: {fileID: 6495187542105842478}
-  - component: {fileID: 2252390554570137900}
   - component: {fileID: 5956450165038636341}
   - component: {fileID: 3431014012611867952}
   - component: {fileID: 1622464863453199189}
@@ -2473,35 +2472,6 @@ MonoBehaviour:
   fullSteerDegrees: 90
   steerSmoothTime: 0.25
   maxSteerSpeed: 100
---- !u!114 &2252390554570137900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6946208567082938651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5b9e2bfee658d40a49495ae84e6a9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeBehavour
-  changeInterval: 15
-  randomIntervalRange: 5
-  ChangeBehavuour:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6495187542105842478}
-        m_TargetAssemblyTypeName: InmateRotationInput, Assembly-CSharp
-        m_MethodName: ChangeBehaviour
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5956450165038636341
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   brokenSound: {fileID: 3858308329535185170, guid: 99557f0761335c14e978876586430c5f, type: 3}
   raiseAlertSound: {fileID: 6086626039932750107, guid: 5ec687dc3b2754e4c9b395afdcc6ce8a, type: 3}
+  riotSound: {fileID: 6086626039932750107, guid: 8ee0e5eaf987dc4409e1a99e0248d41b, type: 3}
+  pcikedUpValuableSound: {fileID: 0}

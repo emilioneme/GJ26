@@ -97,6 +97,7 @@ public class PlaverManager : MonoBehaviour
     PlayerInputHandler playerInputHandler;
     [SerializeField] TMP_Text DebugText;
 
+    [SerializeField] bool showDeveloper = false;
     bool developerMode = false;
 
     private void Awake()
@@ -109,7 +110,7 @@ public class PlaverManager : MonoBehaviour
 
     private void Start()
     {
-        if (developerMode) DebugText.enabled = true;
+        if (developerMode && showDeveloper) DebugText.enabled = true;
         else DebugText.enabled = false;
 
         FadeImageGO.SetActive(true);
@@ -260,6 +261,7 @@ public class PlaverManager : MonoBehaviour
                     hasAccessToBrdige = true;
                     GameManager.Instance.BridgeBlocker.SetActive(false);
 
+                    Debug.Log("RiotSTarted");
                     riotStarted.Invoke(transform.position);
 
                     ForceDialogue(rioterChantDialogue);

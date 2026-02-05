@@ -12,11 +12,6 @@ public class RioterGang : MonoBehaviour
         Followers = new List<DesiredDirection>(
             FindObjectsByType<DesiredDirection>(FindObjectsSortMode.None)
         );
-
-        foreach ( var f in Followers ) 
-        {
-            f.SetNewTarget(target);
-        }
     }
 
     public void StartRiot() 

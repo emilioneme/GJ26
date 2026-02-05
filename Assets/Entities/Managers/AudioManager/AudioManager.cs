@@ -18,6 +18,10 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] GameObject raiseAlertSound;
 
+    [SerializeField] GameObject riotSound;
+
+    [SerializeField] GameObject pcikedUpValuableSound;
+
     public void RaiseAlertSound() 
     {
         Destroy(Instantiate(raiseAlertSound, Vector3.zero, Quaternion.identity), 5);
@@ -26,5 +30,15 @@ public class AudioManager : MonoBehaviour
     public void BrokenSound(Vector3 pos)
     {
         Destroy(Instantiate(brokenSound, pos, Quaternion.identity), 5);
+    }
+
+    public void ValuableSound()
+    {
+        Destroy(Instantiate(pcikedUpValuableSound), 5f);
+    }
+
+    public void RiotSound()
+    {
+       Instantiate(riotSound);
     }
 }
