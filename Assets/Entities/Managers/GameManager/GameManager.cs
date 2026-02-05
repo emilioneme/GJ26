@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent RaisedALert;
 
+    public bool canGetCaught = true;
 
     private void Awake()
     {
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("alert level: " + UserData.Instance.alertLevel);
         }
 
-        if (UserData.Instance.alertBarAmount > 66 && UserData.Instance.alertLevel != 2)
+        if (UserData.Instance.alertBarAmount > 90 && UserData.Instance.alertLevel != 2)
         {
             sp.playerTarget = true;
             //spc.enabled = false;
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (UserData.Instance.alertBarAmount >= 100)
+        if (UserData.Instance.alertBarAmount >= 100 && canGetCaught)
         {
             sp.playerTarget = true;
             //spc.enabled = true;

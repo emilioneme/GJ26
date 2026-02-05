@@ -22,6 +22,7 @@ public class PlaverManager : MonoBehaviour
     public UnityEvent<Vector3> riotStarted;
     public UnityEvent climbingLadder; // for sounds
     public UnityEvent gotWeapon;
+    public UnityEvent reachedEnding;
 
     [SerializeField] BlendingHandler BlendingHandler;
 
@@ -234,6 +235,7 @@ public class PlaverManager : MonoBehaviour
                     {
                         GameObject go = hit.transform.gameObject;
                         hasValuable = true;
+                        gotWeapon.Invoke();
                         ForceDialogue(valuableCollectedDialogue);
                         Destroy(go, .01f);
                     }
@@ -295,8 +297,14 @@ public class PlaverManager : MonoBehaviour
             float inverse = 1 - normalize;
             FadeImage.color = Color.Lerp(Color.clear, endingColor, inverse);
 
+            if (inverse > .01f)
+                GameManager.Instance.canGetCaught = false;
+            else
+                GameManager.Instance.canGetCaught = true;
+
             if (inverse > .9f) 
             {
+                FadeImage.color = Color.Lerp(Color.clear, endingColor, inverse += Time.deltaTime);
                 LoadScene("TitleScreen");
             }
         }
