@@ -144,8 +144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioObjectPlayer
   pitchRandomizerOffset: 0.1
   AudioClips:
-  - {fileID: 8300000, guid: 6bee24f92ee5aaa47af89f2cf3439b0e, type: 3}
-  loop: 0
+  - {fileID: 8300000, guid: c6827e203246b0e418eb9476f0907843, type: 3}
+  loop: 1
   automaticDestroy: 1
   playOnStart: 1
   playOnEnable: 0
